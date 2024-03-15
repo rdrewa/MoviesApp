@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
-          child: Text('Hello, Movies World!'),
+          child: Text('Movie BLoC App'),
         ),
       ),
     );
