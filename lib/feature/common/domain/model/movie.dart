@@ -1,11 +1,12 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'media_type.dart';
 
-
+part 'movie.g.dart';
 
 @JsonSerializable()
-class Movie {
+class Movie extends Equatable {
   final bool adult;
   final String? backdropPath;
   final int id;
@@ -30,28 +31,58 @@ class Movie {
   final dynamic profilePath;
   final List<Movie>? knownFor;
 
-  Movie(
-      this.adult,
-      this.backdropPath,
-      this.id,
-      this.title,
-      this.originalLanguage,
-      this.originalTitle,
-      this.overview,
-      this.posterPath,
-      this.mediaType,
-      this.genreIds,
-      this.popularity,
-      this.releaseDate,
-      this.video,
-      this.voteAverage,
-      this.voteCount,
-      this.name,
-      this.originalName,
-      this.firstAirDate,
-      this.originCountry,
-      this.gender,
-      this.knownForDepartment,
-      this.profilePath,
-      this.knownFor);
+  const Movie(
+      {required this.adult,
+      required this.backdropPath,
+      required this.id,
+      required this.title,
+      required this.originalLanguage,
+      required this.originalTitle,
+      required this.overview,
+      required this.posterPath,
+      required this.mediaType,
+      required this.genreIds,
+      required this.popularity,
+      required this.releaseDate,
+      required this.video,
+      required this.voteAverage,
+      required this.voteCount,
+      required this.name,
+      required this.originalName,
+      required this.firstAirDate,
+      required this.originCountry,
+      required this.gender,
+      required this.knownForDepartment,
+      required this.profilePath,
+      required this.knownFor});
+
+  factory Movie.fromJson(Map<String, dynamic> data) => _$MovieFromJson(data);
+
+  Map<String, dynamic> toJson() => _$MovieToJson(this);
+
+  @override
+  List<Object?> get props => [
+        adult,
+        backdropPath,
+        id,
+        title,
+        originalLanguage,
+        originalTitle,
+        overview,
+        posterPath,
+        mediaType,
+        popularity,
+        releaseDate,
+        video,
+        voteAverage,
+        voteCount,
+        name,
+        originalName,
+        firstAirDate,
+        originCountry,
+        gender,
+        knownForDepartment,
+        profilePath,
+        knownFor
+      ];
 }
