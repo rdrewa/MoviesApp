@@ -7,4 +7,6 @@ abstract class MovieRepository {
   Future<Either<Failure, List<Movie>>> getTrendingList();
 
   Future<Either<Failure, List<Movie>>> getPopularList();
+
+  Future<Either<Failure, List<Movie>>> getTopRatedList();
 }
