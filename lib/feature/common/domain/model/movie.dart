@@ -6,21 +6,28 @@ part 'movie.g.dart';
 @JsonSerializable()
 class Movie extends Equatable {
   final bool adult;
+  @JsonKey(name: 'backdrop_path')
   final String? backdropPath;
+  @JsonKey(name: 'genre_ids')
   final List<int> genreIds;
   final int id;
+  @JsonKey(name: 'original_language')
   final String originalLanguage;
-  @JsonKey(readValue: _readOriginalTitle)
+  @JsonKey(name: 'original_title', readValue: _readOriginalTitle)
   final String originalTitle;
   final String overview;
   final double popularity;
+  @JsonKey(name: 'poster_path')
   final String posterPath;
-  @JsonKey(readValue: _readReleaseDate)
+  @JsonKey(name: 'release_date', readValue: _readReleaseDate)
   final DateTime releaseDate;
   @JsonKey(readValue: _readTitle)
   final String title;
+  @JsonKey(defaultValue: false)
   final bool video;
+  @JsonKey(name: 'vote_average')
   final double voteAverage;
+  @JsonKey(name: 'vote_count')
   final int voteCount;
 
   const Movie(
@@ -44,7 +51,22 @@ class Movie extends Equatable {
   Map<String, dynamic> toJson() => _$MovieToJson(this);
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [
+        id,
+        adult,
+        backdropPath,
+        genreIds,
+        originalLanguage,
+        originalTitle,
+        overview,
+        popularity,
+        posterPath,
+        releaseDate,
+        title,
+        video,
+        voteAverage,
+        voteCount
+      ];
 
   static Object _readOriginalTitle(Map<dynamic, dynamic> map, String key) =>
       map[key] ?? (map['original_name'] ?? '');
