@@ -51,7 +51,22 @@ class Movie extends Equatable {
   Map<String, dynamic> toJson() => _$MovieToJson(this);
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [
+        id,
+        adult,
+        backdropPath,
+        genreIds,
+        originalLanguage,
+        originalTitle,
+        overview,
+        popularity,
+        posterPath,
+        releaseDate,
+        title,
+        video,
+        voteAverage,
+        voteCount
+      ];
 
   static Object _readOriginalTitle(Map<dynamic, dynamic> map, String key) =>
       map[key] ?? (map['original_name'] ?? '');
