@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:movies_app/feature/common/domain/model/movie.dart';
