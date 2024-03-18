@@ -27,11 +27,11 @@ final testMovie2 = Movie(
     overview:
         'A young boy known as the Avatar must master the four elemental powers to save a world at war — and fight a ruthless enemy bent on stopping him.',
     popularity: 878.119,
-    posterPath: '/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg',
-    releaseDate: DateTime.parse('2024-02-27'),
+    posterPath: '/lzZpWEaqzP0qVA5nkCc5ASbNcSy.jpg',
+    releaseDate: DateTime.parse('2024-02-22'),
     title: 'Avatar: The Last Airbender',
     video: false,
     voteAverage: 8.101,
-    voteCount: 503);
+    voteCount: 504);
 
 final testMovies = [testMovie1, testMovie2];
