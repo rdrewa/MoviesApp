@@ -17,7 +17,7 @@ class MovieRestRepository implements MovieRepository {
     try {
       final ResponseData responseData = await service.getPopularList('apiKey');
       return Right(responseData.results);
-    } on Exception catch (e) {
+    } on Exception {
       return const Left(ServerFailure('Server Failure'));
     }
   }
@@ -27,7 +27,7 @@ class MovieRestRepository implements MovieRepository {
     try {
       final ResponseData responseData = await service.getTrendingList('apiKey');
       return Right(responseData.results);
-    } on Exception catch (e) {
+    } on Exception {
       return const Left(ServerFailure('Server Failure'));
     }
   }
@@ -37,7 +37,7 @@ class MovieRestRepository implements MovieRepository {
     try {
       final ResponseData responseData = await service.getTopRatedList('apiKey');
       return Right(responseData.results);
-    } on Exception catch (e) {
+    } on Exception {
       return const Left(ServerFailure('Server Failure'));
     }
   }
