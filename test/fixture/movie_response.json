@@ -1,0 +1,50 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/8uVKfOJUhmybNsVh089EqLHUYEG.jpg",
+      "id": 693134,
+      "title": "Dune: Part Two",
+      "original_language": "en",
+      "original_title": "Dune: Part Two",
+      "overview": "Follow the mythic journey of Paul Atreides as he unites with Chani and the Fremen while on a path of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe, Paul endeavors to prevent a terrible future only he can foresee.",
+      "poster_path": "/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg",
+      "media_type": "movie",
+      "genre_ids": [
+        878,
+        12
+      ],
+      "popularity": 1054.137,
+      "release_date": "2024-02-27",
+      "video": false,
+      "vote_average": 8.398,
+      "vote_count": 1725
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/imlTCObfzISogbvcwB1dokoXAIc.jpg",
+      "id": 82452,
+      "name": "Avatar: The Last Airbender",
+      "original_language": "en",
+      "original_name": "Avatar: The Last Airbender",
+      "overview": "A young boy known as the Avatar must master the four elemental powers to save a world at war — and fight a ruthless enemy bent on stopping him.",
+      "poster_path": "/lzZpWEaqzP0qVA5nkCc5ASbNcSy.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        10765,
+        10759,
+        18
+      ],
+      "popularity": 878.119,
+      "first_air_date": "2024-02-22",
+      "vote_average": 8.101,
+      "vote_count": 504,
+      "origin_country": [
+        "US"
+      ]
+    }
+  ],
+  "total_pages": 1,
+  "total_results": 2
+}
