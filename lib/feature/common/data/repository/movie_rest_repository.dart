@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 
+import '../../../../app/config.dart';
 import '../../../../feature/common/data/model/response_data.dart';
 import '../../../../feature/common/data/source/remote/movie_service.dart';
 import '../../../../core/error/failure.dart';
@@ -15,7 +16,7 @@ class MovieRestRepository implements MovieRepository {
   @override
   Future<Either<Failure, List<Movie>>> getPopularList() async {
     try {
-      final ResponseData responseData = await service.getPopularList('apiKey');
+      final ResponseData responseData = await service.getPopularList(Config.apiKey);
       return Right(responseData.results);
     } on Exception {
       return const Left(ServerFailure('Server Failure'));
@@ -25,7 +26,7 @@ class MovieRestRepository implements MovieRepository {
   @override
   Future<Either<Failure, List<Movie>>> getTrendingList() async {
     try {
-      final ResponseData responseData = await service.getTrendingList('apiKey');
+      final ResponseData responseData = await service.getTrendingList(Config.apiKey);
       return Right(responseData.results);
     } on Exception {
       return const Left(ServerFailure('Server Failure'));
@@ -35,7 +36,7 @@ class MovieRestRepository implements MovieRepository {
   @override
   Future<Either<Failure, List<Movie>>> getTopRatedList() async {
     try {
-      final ResponseData responseData = await service.getTopRatedList('apiKey');
+      final ResponseData responseData = await service.getTopRatedList(Config.apiKey);
       return Right(responseData.results);
     } on Exception {
       return const Left(ServerFailure('Server Failure'));
