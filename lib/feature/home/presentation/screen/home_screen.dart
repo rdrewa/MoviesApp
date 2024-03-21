@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,8 +13,8 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
         child: BlocBuilder<TrendingBloc, TrendingState>(
             builder: (context, state) => switch (state) {
-                  TrendingInitial() => const Center(
-                      child: Text('Movie BLoC App: Home'),
+                  TrendingInitial() => Center(
+                      child: const Text('home.title').tr(),
                     ),
                   TrendingEmpty() => const Text('Empty Trending Movies list'),
                   TrendingLoading() => const CircularProgressIndicator(),
