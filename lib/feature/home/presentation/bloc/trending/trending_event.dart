@@ -7,4 +7,4 @@ sealed class TrendingEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class OnGetTrendingEvent extends TrendingEvent {}
+class GetTrendingEvent extends TrendingEvent {}
