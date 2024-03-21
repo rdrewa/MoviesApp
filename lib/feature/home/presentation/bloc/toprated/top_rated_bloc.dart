@@ -12,7 +12,7 @@ class TopRatedBloc extends Bloc<TopRatedEvent, TopRatedState> {
   final GetTopRatedUsecase _getTopRatedUsecase;
 
   TopRatedBloc(this._getTopRatedUsecase) : super(TopRatedInitial()) {
-    on<TopRatedEvent>(_onGetTopRatedEvent);
+    on<GetTopRatedEvent>(_onGetTopRatedEvent);
   }
 
   FutureOr<void> _onGetTopRatedEvent(

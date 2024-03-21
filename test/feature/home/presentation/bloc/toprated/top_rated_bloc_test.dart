@@ -27,7 +27,7 @@ void main() {
       build: () => topRatedBloc,
       setUp: () => when(() => mockGetTopRatedUsecase())
           .thenAnswer((_) async => Right(testMovies)),
-      act: (bloc) => bloc.add(OnGetTopRatedEvent()),
+      act: (bloc) => bloc.add(GetTopRatedEvent()),
       expect: () => [TopRatedLoading(), TopRatedLoaded(testMovies)]);
 
   blocTest<TopRatedBloc, TopRatedState>(
@@ -35,7 +35,7 @@ void main() {
       build: () => topRatedBloc,
       setUp: () => when(() => mockGetTopRatedUsecase())
           .thenAnswer((_) async => const Right([])),
-      act: (bloc) => bloc.add(OnGetTopRatedEvent()),
+      act: (bloc) => bloc.add(GetTopRatedEvent()),
       expect: () => [TopRatedLoading(), TopRatedEmpty()]);
 
   blocTest<TopRatedBloc, TopRatedState>(
@@ -43,6 +43,6 @@ void main() {
       build: () => topRatedBloc,
       setUp: () => when(() => mockGetTopRatedUsecase())
           .thenAnswer((_) async => const Left(ServerFailure('Server failure'))),
-      act: (bloc) => bloc.add(OnGetTopRatedEvent()),
+      act: (bloc) => bloc.add(GetTopRatedEvent()),
       expect: () => [TopRatedLoading(), const TopRatedFailure('Something went wrong')]);
 }
