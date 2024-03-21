@@ -12,7 +12,7 @@ class PopularBloc extends Bloc<PopularEvent, PopularState> {
   final GetPopularUsecase _getPopularUsecase;
 
   PopularBloc(this._getPopularUsecase) : super(PopularInitial()) {
-    on<PopularEvent>(_onGetPopularEvent);
+    on<GetPopularEvent>(_onGetPopularEvent);
   }
 
   FutureOr<void> _onGetPopularEvent(
