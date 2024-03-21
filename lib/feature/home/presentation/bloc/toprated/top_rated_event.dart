@@ -7,4 +7,4 @@ sealed class TopRatedEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class OnGetTopRatedEvent extends TopRatedEvent {}
+class GetTopRatedEvent extends TopRatedEvent {}

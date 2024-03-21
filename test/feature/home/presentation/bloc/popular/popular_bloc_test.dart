@@ -27,7 +27,7 @@ void main() {
       build: () => popularBloc,
       setUp: () => when(() => mockGetPopularUsecase())
           .thenAnswer((_) async => Right(testMovies)),
-      act: (bloc) => bloc.add(OnGetPopularEvent()),
+      act: (bloc) => bloc.add(GetPopularEvent()),
       wait: const Duration(microseconds: 500),
       expect: () => [PopularLoading(), PopularLoaded(testMovies)]);
 
@@ -36,7 +36,7 @@ void main() {
       build: () => popularBloc,
       setUp: () => when(() => mockGetPopularUsecase())
           .thenAnswer((_) async => const Right([])),
-      act: (bloc) => bloc.add(OnGetPopularEvent()),
+      act: (bloc) => bloc.add(GetPopularEvent()),
       wait: const Duration(microseconds: 500),
       expect: () => [PopularLoading(), PopularEmpty()]);
 
@@ -45,7 +45,7 @@ void main() {
       build: () => popularBloc,
       setUp: () => when(() => mockGetPopularUsecase())
           .thenAnswer((_) async => const Left(ServerFailure('Server failure'))),
-      act: (bloc) => bloc.add(OnGetPopularEvent()),
+      act: (bloc) => bloc.add(GetPopularEvent()),
       wait: const Duration(microseconds: 500),
       expect: () => [PopularLoading(), const PopularFailure('Something went wrong')]);
 }

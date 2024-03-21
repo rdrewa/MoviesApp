@@ -27,7 +27,7 @@ void main() {
       build: () => trendingBloc,
       setUp: () => when(() => mockGetTrendingUsecase())
           .thenAnswer((_) async => Right(testMovies)),
-      act: (bloc) => bloc.add(OnGetTrendingEvent()),
+      act: (bloc) => bloc.add(GetTrendingEvent()),
       expect: () => [TrendingLoading(), TrendingLoaded(testMovies)]);
 
   blocTest<TrendingBloc, TrendingState>(
@@ -35,7 +35,7 @@ void main() {
       build: () => trendingBloc,
       setUp: () => when(() => mockGetTrendingUsecase())
           .thenAnswer((_) async => const Right([])),
-      act: (bloc) => bloc.add(OnGetTrendingEvent()),
+      act: (bloc) => bloc.add(GetTrendingEvent()),
       expect: () => [TrendingLoading(), TrendingEmpty()]);
 
   blocTest<TrendingBloc, TrendingState>(
@@ -43,6 +43,6 @@ void main() {
       build: () => trendingBloc,
       setUp: () => when(() => mockGetTrendingUsecase())
           .thenAnswer((_) async => const Left(ServerFailure('Server failure'))),
-      act: (bloc) => bloc.add(OnGetTrendingEvent()),
+      act: (bloc) => bloc.add(GetTrendingEvent()),
       expect: () => [TrendingLoading(), const TrendingFailure('Something went wrong')]);
 }

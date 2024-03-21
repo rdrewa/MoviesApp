@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -11,6 +12,11 @@ import '../../../../util/data.dart';
 import '../../../../util/mocks.dart';
 
 void main() {
+  dotenv.testLoad(mergeWith: {
+    'API_URL': 'apiUrl',
+    'API_KEY': 'apiKey'
+  });
+
   late MockMovieService mockMovieService;
   late MovieRestRepository movieRestRepository;
 

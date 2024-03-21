@@ -7,4 +7,4 @@ sealed class PopularEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class OnGetPopularEvent extends PopularEvent {}
+class GetPopularEvent extends PopularEvent {}

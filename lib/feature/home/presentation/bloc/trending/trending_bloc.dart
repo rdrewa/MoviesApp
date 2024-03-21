@@ -12,7 +12,7 @@ class TrendingBloc extends Bloc<TrendingEvent, TrendingState> {
   final GetTrendingUsecase _getTrendingUsecase;
 
   TrendingBloc(this._getTrendingUsecase) : super(TrendingInitial()) {
-    on<TrendingEvent>(_onGetTrendingEvent);
+    on<GetTrendingEvent>(_onGetTrendingEvent);
   }
 
   FutureOr<void> _onGetTrendingEvent(
