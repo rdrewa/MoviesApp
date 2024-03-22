@@ -42,7 +42,7 @@ class _MainHostScreenState extends State<MainHostScreen> {
             BottomNavigationBarItem(
                 label: 'navigation.watch'.tr(),
                 icon: const Icon(
-                  Icons.watch,
+                  Icons.remove_red_eye,
                   size: 20,
                 )),
           ],
