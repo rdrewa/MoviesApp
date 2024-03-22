@@ -2,7 +2,12 @@
   "app": {
     "title": "Movies App"
   },
+  "navigation" :  {
+    "home": "home",
+    "now": "now",
+    "watch": "watch"
+  },
   "home": {
-    "title": "Movie BLoC App: Home XXX [PL]"
+    "title": "Movie BLoC App: Home"
   }
 }
