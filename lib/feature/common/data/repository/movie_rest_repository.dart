@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../app/config.dart';
 import '../../../../feature/common/data/model/response_data.dart';
 import '../../../../feature/common/data/source/remote/movie_service.dart';
 import '../../../../core/error/failure.dart';

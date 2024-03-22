@@ -13,7 +13,6 @@ import '../../../../../util/mocks.dart';
 class FakeRequestOptions extends Fake implements RequestOptions {}
 
 void main() {
-  const apiKey = 'XYZ';
   late MockHttpClientAdapter mockHttpClientAdapter;
   late MovieService movieService;
 
