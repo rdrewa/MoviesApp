@@ -9,12 +9,12 @@ part 'movie_service.g.dart';
 abstract class MovieService {
   factory MovieService(Dio dio) = _MovieService;
 
-  @GET('trending/all/week?api_key={apiKey}')
-  Future<ResponseData> getTrendingList(@Path() String apiKey);
+  @GET('trending/all/week')
+  Future<ResponseData> getTrendingList();
 
-  @GET('movie/popular?api_key={apiKey}')
-  Future<ResponseData> getPopularList(@Path() String apiKey);
+  @GET('movie/popular')
+  Future<ResponseData> getPopularList();
 
-  @GET('movie/top_rated?api_key={apiKey}')
-  Future<ResponseData> getTopRatedList(@Path() String apiKey);
+  @GET('movie/top_rated')
+  Future<ResponseData> getTopRatedList();
 }
