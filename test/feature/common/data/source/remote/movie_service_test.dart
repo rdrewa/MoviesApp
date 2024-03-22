@@ -13,7 +13,6 @@ import '../../../../../util/mocks.dart';
 class FakeRequestOptions extends Fake implements RequestOptions {}
 
 void main() {
-  const apiKey = 'XYZ';
   late MockHttpClientAdapter mockHttpClientAdapter;
   late MovieService movieService;
 
@@ -34,7 +33,7 @@ void main() {
       mockHttpClientAdapter.mockResponseStub(fixture('movie_response'), 200);
 
       // act
-      final result = await movieService.getTopRatedList(apiKey);
+      final result = await movieService.getTopRatedList();
 
       // assert
       expect(result, isA<ResponseData>());
@@ -47,7 +46,7 @@ void main() {
       mockHttpClientAdapter.mockResponseStub(fixture('movie_response'), 200);
 
       // act
-      final result = await movieService.getPopularList(apiKey);
+      final result = await movieService.getPopularList();
 
       // assert
       expect(result, isA<ResponseData>());
@@ -60,7 +59,7 @@ void main() {
           mockHttpClientAdapter.mockResponseStub(fixture('movie_response'), 200);
 
           // act
-          final result = await movieService.getTopRatedList(apiKey);
+          final result = await movieService.getTopRatedList();
 
           // assert
           expect(result, isA<ResponseData>());
@@ -75,7 +74,7 @@ void main() {
       final request = movieService.getTopRatedList;
 
       // assert
-      expect(() => request(apiKey), throwsA(const TypeMatcher<DioException>()));
+      expect(() => request(), throwsA(const TypeMatcher<DioException>()));
     });
   });
 }
