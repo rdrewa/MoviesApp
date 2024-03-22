@@ -13,8 +13,8 @@ import '../../../../util/mocks.dart';
 
 void main() {
   dotenv.testLoad(mergeWith: {
-    'API_URL': 'apiUrl',
-    'API_KEY': 'apiKey'
+    'API_URL': 'API-URL',
+    'API_KEY': 'API-TOKEN'
   });
 
   late MockMovieService mockMovieService;
@@ -30,7 +30,7 @@ void main() {
   group('Get movies lists', () {
     test('Should return Trending movies list when call to service is successful ', () async {
       // arrange
-      when(() => mockMovieService.getTrendingList('apiKey')).thenAnswer((_) async => responseData);
+      when(() => mockMovieService.getTrendingList()).thenAnswer((_) async => responseData);
 
       // act
       final result = await movieRestRepository.getTrendingList();
@@ -41,7 +41,7 @@ void main() {
 
     test('Should return Top Rated movies list when call to service is successful ', () async {
       // arrange
-      when(() => mockMovieService.getTopRatedList('apiKey')).thenAnswer((_) async => responseData);
+      when(() => mockMovieService.getTopRatedList()).thenAnswer((_) async => responseData);
 
       // act
       final result = await movieRestRepository.getTopRatedList();
@@ -52,7 +52,7 @@ void main() {
 
     test('Should return Popular movies list when call to service is successful ', () async {
       // arrange
-      when(() => mockMovieService.getPopularList('apiKey')).thenAnswer((_) async => responseData);
+      when(() => mockMovieService.getPopularList()).thenAnswer((_) async => responseData);
 
       // act
       final result = await movieRestRepository.getPopularList();
@@ -63,7 +63,7 @@ void main() {
     
     test('Should return server failure when a call about Trending Movies to service ris unsuccessful', () async {
       // arrange
-      when(() => mockMovieService.getTrendingList('apiKey')).thenThrow(DioException(requestOptions: RequestOptions()));
+      when(() => mockMovieService.getTrendingList()).thenThrow(DioException(requestOptions: RequestOptions()));
 
       // act
       final result = await movieRestRepository.getTrendingList();
@@ -74,7 +74,7 @@ void main() {
 
     test('Should return server failure when a call about Top Rated Movies to service ris unsuccessful', () async {
       // arrange
-      when(() => mockMovieService.getTopRatedList('apiKey')).thenThrow(DioException(requestOptions: RequestOptions()));
+      when(() => mockMovieService.getTopRatedList()).thenThrow(DioException(requestOptions: RequestOptions()));
 
       // act
       final result = await movieRestRepository.getTopRatedList();
@@ -85,7 +85,7 @@ void main() {
 
     test('Should return server failure when a call about Popular Movies to service ris unsuccessful', () async {
       // arrange
-      when(() => mockMovieService.getPopularList('apiKey')).thenThrow(DioException(requestOptions: RequestOptions()));
+      when(() => mockMovieService.getPopularList()).thenThrow(DioException(requestOptions: RequestOptions()));
 
       // act
       final result = await movieRestRepository.getPopularList();
