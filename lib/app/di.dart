@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:movies_app/app/config.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../feature/home/presentation/bloc/popular/popular_bloc.dart';
@@ -15,6 +14,10 @@ import '../feature/common/domain/repository/movie_repository.dart';
 import '../feature/common/data/repository/movie_rest_repository.dart';
 
 import '../feature/common/data/source/remote/movie_service.dart';
+import '../core/interceptor/token_interceptor.dart';
+
+import 'config.dart';
+
 
 final sl = GetIt.instance;
 
@@ -40,5 +43,8 @@ void initDependencies() {
     ..options.headers['Accept'] = 'application/json'
     ..options.baseUrl = Config.apiUrl
     ..interceptors
-        .add(PrettyDioLogger(requestHeader: true, requestBody: true)));
+        .add(PrettyDioLogger(requestHeader: true, requestBody: true))
+    ..interceptors
+        .add(TokenInterceptor())
+  );
 }
