@@ -9,7 +9,7 @@ class Movie extends Equatable {
   @JsonKey(name: 'backdrop_path')
   final String? backdropPath;
   @JsonKey(name: 'genre_ids')
-  final List<int> genreIds;
+  final List<int>? genreIds;
   final int id;
   @JsonKey(name: 'original_language')
   final String originalLanguage;
@@ -33,7 +33,7 @@ class Movie extends Equatable {
   const Movie(
       {required this.adult,
       this.backdropPath,
-      required this.genreIds,
+      this.genreIds,
       required this.id,
       required this.originalLanguage,
       required this.originalTitle,
