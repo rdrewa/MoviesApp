@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:movies_app/feature/common/data/model/response_data.dart';
+import 'package:movies_app/feature/common/data/model/movie_response.dart';
 import 'package:movies_app/feature/common/data/source/remote/movie_service.dart';
 
 import '../../../../../util/data.dart';
@@ -36,7 +36,7 @@ void main() {
       final result = await movieService.getTopRatedList();
 
       // assert
-      expect(result, isA<ResponseData>());
+      expect(result, isA<MovieResponse>());
       expect(result.results, testMovies);
     });
 
@@ -49,7 +49,7 @@ void main() {
       final result = await movieService.getPopularList();
 
       // assert
-      expect(result, isA<ResponseData>());
+      expect(result, isA<MovieResponse>());
       expect(result.results, testMovies);
     });
 
@@ -62,7 +62,7 @@ void main() {
           final result = await movieService.getTopRatedList();
 
           // assert
-          expect(result, isA<ResponseData>());
+          expect(result, isA<MovieResponse>());
           expect(result.results, testMovies);
         });
 
