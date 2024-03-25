@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:movies_app/core/error/failure.dart';
-import 'package:movies_app/feature/common/data/model/response_data.dart';
+import 'package:movies_app/feature/common/data/model/movie_response.dart';
 import 'package:movies_app/feature/common/data/repository/movie_rest_repository.dart';
 
 import '../../../../util/data.dart';
@@ -20,7 +20,7 @@ void main() {
   late MockMovieService mockMovieService;
   late MovieRestRepository movieRestRepository;
 
-  final ResponseData responseData = ResponseData(page: 1, results: testMovies, totalPages: 1, totalResults: testMovies.length);
+  final MovieResponse responseData = MovieResponse(page: 1, results: testMovies, totalPages: 1, totalResults: testMovies.length);
 
   setUp(() {
     mockMovieService = MockMovieService();
