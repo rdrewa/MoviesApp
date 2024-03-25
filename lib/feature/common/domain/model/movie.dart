@@ -18,7 +18,7 @@ class Movie extends Equatable {
   final String overview;
   final double popularity;
   @JsonKey(name: 'poster_path')
-  final String posterPath;
+  final String? posterPath;
   @JsonKey(name: 'release_date', readValue: _readReleaseDate)
   final DateTime releaseDate;
   @JsonKey(readValue: _readTitle)
@@ -39,7 +39,7 @@ class Movie extends Equatable {
       required this.originalTitle,
       required this.overview,
       required this.popularity,
-      required this.posterPath,
+      this.posterPath,
       required this.releaseDate,
       required this.title,
       required this.video,
