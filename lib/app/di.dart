@@ -5,10 +5,12 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../feature/home/presentation/bloc/popular/popular_bloc.dart';
 import '../feature/home/presentation/bloc/toprated/top_rated_bloc.dart';
 import '../feature/home/presentation/bloc/trending/trending_bloc.dart';
+import '../feature/details/presentation/bloc/details/details_bloc.dart';
 
 import '../feature/home/domain/usecase/get_trending_usecase.dart';
 import '../feature/home/domain/usecase/get_popular_usecase.dart';
 import '../feature/home/domain/usecase/get_top_rated_usecase.dart';
+import '../feature/details/domain/usecase/get_details_usecase.dart';
 
 import '../feature/common/domain/repository/movie_repository.dart';
 import '../feature/common/data/repository/movie_rest_repository.dart';
@@ -26,11 +28,13 @@ void initDependencies() {
   sl.registerFactory(() => TrendingBloc(sl()));
   sl.registerFactory(() => PopularBloc(sl()));
   sl.registerFactory(() => TopRatedBloc(sl()));
+  sl.registerFactory(() => DetailsBloc(sl()));
 
   // Usecase
   sl.registerLazySingleton(() => GetTrendingUsecase(sl()));
   sl.registerLazySingleton(() => GetPopularUsecase(sl()));
   sl.registerLazySingleton(() => GetTopRatedUsecase(sl()));
+  sl.registerLazySingleton(() => GetDetailsUsecase(sl()));
 
   // Repository
   sl.registerLazySingleton<MovieRepository>(() => MovieRestRepository(sl()));

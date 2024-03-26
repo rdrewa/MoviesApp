@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 
-import '../../../../common/data/model/response_data.dart';
+import '../../../../common/data/model/movie_response.dart';
+import '../../../../details/domain/model/movie_details.dart';
 
 part 'movie_service.g.dart';
 
@@ -10,11 +11,14 @@ abstract class MovieService {
   factory MovieService(Dio dio) = _MovieService;
 
   @GET('trending/all/week')
-  Future<ResponseData> getTrendingList();
+  Future<MovieResponse> getTrendingList();
 
   @GET('movie/popular')
-  Future<ResponseData> getPopularList();
+  Future<MovieResponse> getPopularList();
 
   @GET('movie/top_rated')
-  Future<ResponseData> getTopRatedList();
+  Future<MovieResponse> getTopRatedList();
+
+  @GET('movie/{id}?append_to_response=credits,reviews,similar')
+  Future<MovieDetails> getMovieDetails(@Path() int id);
 }

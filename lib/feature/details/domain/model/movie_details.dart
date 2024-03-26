@@ -1,10 +1,18 @@
 import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:movies_app/feature/details/data/model/review_response.dart';
 
-part 'movie.g.dart';
+import '../../../common/data/model/movie_response.dart';
+import '../../../common/domain/model/movie.dart';
+import 'cast.dart';
+import 'credits.dart';
+import 'genre.dart';
+import 'review.dart';
+
+part 'movie_details.g.dart';
 
 @JsonSerializable()
-class Movie extends Equatable {
+class MovieDetails extends Equatable {
   final bool adult;
   @JsonKey(name: 'backdrop_path')
   final String? backdropPath;
@@ -18,7 +26,7 @@ class Movie extends Equatable {
   final String overview;
   final double popularity;
   @JsonKey(name: 'poster_path')
-  final String? posterPath;
+  final String posterPath;
   @JsonKey(name: 'release_date', readValue: _readReleaseDate)
   final DateTime releaseDate;
   @JsonKey(readValue: _readTitle)
@@ -30,7 +38,14 @@ class Movie extends Equatable {
   @JsonKey(name: 'vote_count')
   final int voteCount;
 
-  const Movie(
+  final List<Genre> genres;
+  final Credits credits;
+  @JsonKey(name: 'reviews')
+  final ReviewResponse reviewsData;
+  @JsonKey(name: 'similar')
+  final MovieResponse similarData;
+
+  const MovieDetails(
       {required this.adult,
       this.backdropPath,
       this.genreIds,
@@ -39,16 +54,21 @@ class Movie extends Equatable {
       required this.originalTitle,
       required this.overview,
       required this.popularity,
-      this.posterPath,
+      required this.posterPath,
       required this.releaseDate,
       required this.title,
       required this.video,
       required this.voteAverage,
-      required this.voteCount});
+      required this.voteCount,
+      required this.genres,
+      required this.credits,
+      required this.reviewsData,
+      required this.similarData});
 
-  factory Movie.fromJson(Map<String, dynamic> data) => _$MovieFromJson(data);
+  factory MovieDetails.fromJson(Map<String, dynamic> data) =>
+      _$MovieDetailsFromJson(data);
 
-  Map<String, dynamic> toJson() => _$MovieToJson(this);
+  Map<String, dynamic> toJson() => _$MovieDetailsToJson(this);
 
   @override
   List<Object?> get props => [
@@ -65,8 +85,18 @@ class Movie extends Equatable {
         title,
         video,
         voteAverage,
-        voteCount
+        voteCount,
+        genres,
+        credits,
+        reviewsData,
+        similarData
       ];
+
+  List<Cast> get cast => credits.cast;
+
+  List<Review> get reviews => reviewsData.results;
+
+  List<Movie> get similar => similarData.results;
 
   static Object _readOriginalTitle(Map<dynamic, dynamic> map, String key) =>
       map[key] ?? (map['original_name'] ?? '');

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
+import 'package:movies_app/feature/details/domain/model/movie_details.dart';
 
-import '../../../../feature/common/data/model/response_data.dart';
+import '../../../../feature/common/data/model/movie_response.dart';
 import '../../../../feature/common/data/source/remote/movie_service.dart';
 import '../../../../core/error/failure.dart';
 import '../../../common/domain/model/movie.dart';
@@ -15,7 +16,7 @@ class MovieRestRepository implements MovieRepository {
   @override
   Future<Either<Failure, List<Movie>>> getPopularList() async {
     try {
-      final ResponseData responseData = await service.getPopularList();
+      final MovieResponse responseData = await service.getPopularList();
       return Right(responseData.results);
     } on Exception {
       return const Left(ServerFailure('Server Failure'));
@@ -25,7 +26,7 @@ class MovieRestRepository implements MovieRepository {
   @override
   Future<Either<Failure, List<Movie>>> getTrendingList() async {
     try {
-      final ResponseData responseData = await service.getTrendingList();
+      final MovieResponse responseData = await service.getTrendingList();
       return Right(responseData.results);
     } on Exception {
       return const Left(ServerFailure('Server Failure'));
@@ -35,8 +36,18 @@ class MovieRestRepository implements MovieRepository {
   @override
   Future<Either<Failure, List<Movie>>> getTopRatedList() async {
     try {
-      final ResponseData responseData = await service.getTopRatedList();
+      final MovieResponse responseData = await service.getTopRatedList();
       return Right(responseData.results);
+    } on Exception {
+      return const Left(ServerFailure('Server Failure'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, MovieDetails>> getMovieDetails(int id) async {
+    try {
+      final MovieDetails movieDetails = await service.getMovieDetails(id);
+      return Right(movieDetails);
     } on Exception {
       return const Left(ServerFailure('Server Failure'));
     }

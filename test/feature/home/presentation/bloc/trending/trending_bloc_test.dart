@@ -44,5 +44,6 @@ void main() {
       setUp: () => when(() => mockGetTrendingUsecase())
           .thenAnswer((_) async => const Left(ServerFailure('Server failure'))),
       act: (bloc) => bloc.add(GetTrendingEvent()),
-      expect: () => [TrendingLoading(), const TrendingFailure('Something went wrong')]);
+      expect: () =>
+          [TrendingLoading(), const TrendingFailure('Something went wrong')]);
 }
