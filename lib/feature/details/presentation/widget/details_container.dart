@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../common/domain/model/movie.dart';
 import '../../domain/model/movie_details.dart';
+import 'watch_icon.dart';
 
 class DetailsContainer extends StatelessWidget {
   final MovieDetails details;
@@ -21,6 +23,7 @@ class DetailsContainer extends StatelessWidget {
             height: 20,
           ),
           const Text('Similar'),
+          WatchIcon(item: Movie.fromDetails(details))
         ],
       ),
     );
