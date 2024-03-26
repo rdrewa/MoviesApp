@@ -53,4 +53,27 @@ void main() {
     // assert
     expect(result, equals(testMovies));
   });
+
+  test(
+      'Should return a valid model from MovieDetails',
+          () async {
+        // arrange: from data.dart
+
+        // act
+        final result = Movie.fromDetails(testMovieDetails);
+
+        // assert
+        expect(result, isA<Movie>());
+        expect(result.id, testMovieDetails.id);
+        expect(result.adult, testMovieDetails.adult);
+        expect(result.originalLanguage, testMovieDetails.originalLanguage);
+        expect(result.originalTitle, testMovieDetails.originalTitle);
+        expect(result.overview, testMovieDetails.overview);
+        expect(result.popularity, testMovieDetails.popularity);
+        expect(result.releaseDate, testMovieDetails.releaseDate);
+        expect(result.title, testMovieDetails.title);
+        expect(result.video, testMovieDetails.video);
+        expect(result.voteAverage, testMovieDetails.voteAverage);
+        expect(result.voteCount, testMovieDetails.voteCount);
+      });
 }
