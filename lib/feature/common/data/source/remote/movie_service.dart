@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:movies_app/feature/now/domain/model/movie_now.dart';
 import 'package:retrofit/http.dart';
 
 import '../../../../common/data/model/movie_response.dart';
@@ -21,4 +22,10 @@ abstract class MovieService {
 
   @GET('movie/{id}?append_to_response=credits,reviews,similar')
   Future<MovieDetails> getMovieDetails(@Path() int id);
+
+  @GET('movie/now_playing')
+  Future<MovieResponse> getNowList();
+
+  @GET('movie/{id}?append_to_response=images')
+  Future<MovieNow> getMovieNow(@Path() int id);
 }
