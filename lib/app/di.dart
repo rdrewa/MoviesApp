@@ -18,7 +18,7 @@ import '../feature/details/domain/usecase/get_details_usecase.dart';
 import '../feature/details/domain/usecase/add_to_watch_usecase.dart';
 import '../feature/details/domain/usecase/is_on_watch_usecase.dart';
 import '../feature/details/domain/usecase/remove_from_watch_usecase.dart';
-import '../feature/watch/domain/usecase/GetWatchListUsecase.dart';
+import '../feature/watch/domain/usecase/get_watch_list_usecase.dart';
 
 import '../feature/common/domain/repository/movie_repository.dart';
 import '../feature/common/domain/repository/watch_repository.dart';
