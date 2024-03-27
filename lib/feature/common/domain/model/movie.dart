@@ -31,8 +31,11 @@ class Movie extends Equatable {
   @JsonKey(name: 'poster_path')
   final String? posterPath;
   @HiveField(7)
-  @JsonKey(name: 'release_date', readValue: _readReleaseDate)
-  final DateTime releaseDate;
+  @JsonKey(
+      name: 'release_date',
+      readValue: _readReleaseDate,
+      fromJson: _parseReleasedDate)
+  final DateTime? releaseDate;
   @HiveField(8)
   @JsonKey(readValue: _readTitle)
   final String title;
@@ -58,7 +61,7 @@ class Movie extends Equatable {
       required this.overview,
       required this.popularity,
       this.posterPath,
-      required this.releaseDate,
+      this.releaseDate,
       required this.title,
       required this.video,
       required this.voteAverage,
@@ -102,6 +105,9 @@ class Movie extends Equatable {
         voteCount
       ];
 
+  @override
+  bool? get stringify => true;
+
   int get key => id;
 
   static Object _readOriginalTitle(Map<dynamic, dynamic> map, String key) =>
@@ -112,4 +118,7 @@ class Movie extends Equatable {
 
   static Object _readTitle(Map<dynamic, dynamic> map, String key) =>
       map[key] ?? (map['name'] ?? '');
+
+  static DateTime? _parseReleasedDate(String releaseDate) =>
+      releaseDate.isNotEmpty ? DateTime.parse(releaseDate) : null;
 }

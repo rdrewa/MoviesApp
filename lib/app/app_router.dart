@@ -21,45 +21,38 @@ class AppRouter {
   static String initial = _homePath;
 
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
-  static final _shellNavigatorHome = GlobalKey<NavigatorState>();
-  static final _shellNavigatorNow = GlobalKey<NavigatorState>();
-  static final _shellNavigatorWatch = GlobalKey<NavigatorState>();
+  static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   static final routeDetails = GoRoute(
     name: AppRoutes.details,
     path: _detailsPath,
-    builder: (context, GoRouterState state) =>
-        DetailsScreen(id: int.parse(state.pathParameters['id']!)),
+    pageBuilder: (context, GoRouterState state) => CupertinoPage(
+        child: DetailsScreen(id: int.parse(state.pathParameters['id']!))),
   );
 
   static final GoRouter config = GoRouter(
       initialLocation: initial,
       navigatorKey: _rootNavigatorKey,
       routes: [
-        StatefulShellRoute.indexedStack(
-            builder: (context, state, navigationShell) =>
-                MainHostScreen(navigationShell: navigationShell),
-            branches: [
-              StatefulShellBranch(navigatorKey: _shellNavigatorHome, routes: [
-                GoRoute(
-                    name: AppRoutes.home,
-                    path: _homePath,
-                    builder: (context, state) => const HomeScreen(),
-                    routes: [routeDetails])
-              ]),
-              StatefulShellBranch(navigatorKey: _shellNavigatorNow, routes: [
-                GoRoute(
-                    name: AppRoutes.now,
-                    path: _nowPath,
-                    builder: (context, state) => const NowScreen())
-              ]),
-              StatefulShellBranch(navigatorKey: _shellNavigatorWatch, routes: [
-                GoRoute(
-                    name: AppRoutes.watch,
-                    path: _watchPath,
-                    builder: (context, state) => const WatchScreen())
-              ])
+        ShellRoute(
+            navigatorKey: _shellNavigatorKey,
+            builder: (context, state, child) => MainHostScreen(child: child),
+            routes: [
+              GoRoute(
+                  name: AppRoutes.home,
+                  path: _homePath,
+                  builder: (context, state) => const HomeScreen(),
+                  routes: [routeDetails]),
+              GoRoute(
+                  name: AppRoutes.now,
+                  path: _nowPath,
+                  pageBuilder: (context, state) =>
+                      const MaterialPage(child: NowScreen())),
+              GoRoute(
+                  name: AppRoutes.watch,
+                  path: _watchPath,
+                  pageBuilder: (context, state) =>
+                      const NoTransitionPage(child: WatchScreen()))
             ]),
-        // routeDetails
       ]);
 }
