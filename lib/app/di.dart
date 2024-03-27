@@ -9,6 +9,7 @@ import '../feature/home/presentation/bloc/toprated/top_rated_bloc.dart';
 import '../feature/home/presentation/bloc/trending/trending_bloc.dart';
 import '../feature/details/presentation/bloc/details/details_bloc.dart';
 import '../feature/details/presentation/bloc/watchedit/watch_edit_bloc.dart';
+import '../feature/watch/presentation/bloc/list/watch_list_bloc.dart';
 
 import '../feature/home/domain/usecase/get_trending_usecase.dart';
 import '../feature/home/domain/usecase/get_popular_usecase.dart';
@@ -17,6 +18,7 @@ import '../feature/details/domain/usecase/get_details_usecase.dart';
 import '../feature/details/domain/usecase/add_to_watch_usecase.dart';
 import '../feature/details/domain/usecase/is_on_watch_usecase.dart';
 import '../feature/details/domain/usecase/remove_from_watch_usecase.dart';
+import '../feature/watch/domain/usecase/GetWatchListUsecase.dart';
 
 import '../feature/common/domain/repository/movie_repository.dart';
 import '../feature/common/domain/repository/watch_repository.dart';
@@ -39,6 +41,7 @@ void initDependencies() {
   sl.registerFactory(() => TopRatedBloc(sl()));
   sl.registerFactory(() => DetailsBloc(sl()));
   sl.registerFactory(() => WatchEditBloc(sl(), sl(), sl()));
+  sl.registerFactory(() => WatchListBloc(sl()));
 
   // Usecase
   sl.registerLazySingleton(() => GetTrendingUsecase(sl()));
@@ -48,6 +51,7 @@ void initDependencies() {
   sl.registerLazySingleton(() => IsOnWatchUsecase(sl()));
   sl.registerLazySingleton(() => AddToWatchUsecase(sl()));
   sl.registerLazySingleton(() => RemoveFromWatchUsecase(sl()));
+  sl.registerLazySingleton(() => GetWatchListUsecase(sl()));
 
   // Repository
   sl.registerLazySingleton<MovieRepository>(() => MovieRestRepository(sl()));
