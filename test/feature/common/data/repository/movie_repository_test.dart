@@ -7,6 +7,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:movies_app/core/error/failure.dart';
 import 'package:movies_app/feature/common/data/model/movie_response.dart';
 import 'package:movies_app/feature/common/data/repository/movie_rest_repository.dart';
+import 'package:movies_app/feature/now/domain/model/movie_now.dart';
 
 import '../../../../util/data.dart';
 import '../../../../util/mocks.dart';
@@ -116,7 +117,7 @@ void main() {
 
   group('Get movie details', () {
     const movieDetailsId = 95;
-    
+
     test('Should return MovieDetails when call to service is successful',
         () async {
       // arrange
@@ -132,13 +133,47 @@ void main() {
 
     test(
         'Should return server failure when a call about MovieDetails to service is unsuccessful',
+        () async {
+      // arrange
+      when(() => mockMovieService.getMovieDetails(movieDetailsId))
+          .thenThrow(DioException(requestOptions: RequestOptions()));
+
+      // act
+      final result = await movieRestRepository.getMovieDetails(movieDetailsId);
+
+      // assert
+      expect(result, equals(const Left(ServerFailure('Server Failure'))));
+    });
+  });
+
+  group('Get movie now', () {
+    const movieNowId = 787699;
+    test('Should return MovieNow list when call to service is successful',
+        () async {
+      // arrange
+      when(() => mockMovieService.getNowList()).thenAnswer((_) async =>
+          MovieResponse(
+              page: 1, results: [testMovie3], totalPages: 1, totalResults: 1));
+      when(() => mockMovieService.getMovieNow(movieNowId))
+          .thenAnswer((_) async => testMovieNow);
+
+      // act
+      final Either<Failure, List<MovieNow>> result = await movieRestRepository.getNowList();
+
+      // assert
+      result.fold((left) => fail('test failed'),
+              (right) => expect(right, [testMovieNow]));
+    });
+
+    test(
+        'Should return server failure when a call about MovieDNow list to service is unsuccessful',
             () async {
           // arrange
-          when(() => mockMovieService.getMovieDetails(movieDetailsId))
+          when(() => mockMovieService.getNowList())
               .thenThrow(DioException(requestOptions: RequestOptions()));
 
           // act
-          final result = await movieRestRepository.getMovieDetails(movieDetailsId);
+          final result = await movieRestRepository.getNowList();
 
           // assert
           expect(result, equals(const Left(ServerFailure('Server Failure'))));

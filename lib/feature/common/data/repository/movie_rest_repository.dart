@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:movies_app/feature/details/domain/model/movie_details.dart';
 
-import '../../../../feature/common/data/model/movie_response.dart';
-import '../../../../feature/common/data/source/remote/movie_service.dart';
 import '../../../../core/error/failure.dart';
-import '../../../common/domain/model/movie.dart';
+import '../../../details/domain/model/movie_details.dart';
 import '../../../now/domain/model/movie_now.dart';
+import '../../domain/model/movie.dart';
 import '../../domain/repository/movie_repository.dart';
+import '../model/movie_response.dart';
+import '../source/remote/movie_service.dart';
 
 class MovieRestRepository implements MovieRepository {
   final MovieService service;
@@ -61,13 +61,8 @@ class MovieRestRepository implements MovieRepository {
         return Right(List<MovieNow>.empty());
       }
 
-      // List<Future<MovieNow>> futures = responseData.results
-      //     .map((movie) => service.getMovieNow(movie.id))
-      //     .toList();
-
       final list = await _getNowParallel(responseData.results.take(3).toList());
       return Right(list);
-      // return Right(List<MovieNow>.empty());
     } on Exception {
       return const Left(ServerFailure('Server Failure'));
     }
