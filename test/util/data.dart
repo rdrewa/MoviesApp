@@ -7,6 +7,9 @@ import 'package:movies_app/feature/details/domain/model/credits.dart';
 import 'package:movies_app/feature/details/domain/model/genre.dart';
 import 'package:movies_app/feature/details/domain/model/movie_details.dart';
 import 'package:movies_app/feature/details/domain/model/review.dart';
+import 'package:movies_app/feature/now/domain/model/movie_now.dart';
+import 'package:movies_app/feature/now/domain/model/picture.dart';
+import 'package:movies_app/feature/now/domain/model/pictures.dart';
 
 final testMovie1 = Movie(
     adult: false,
@@ -144,3 +147,77 @@ final testMovieDetails = MovieDetails(
         page: 1, results: [testReview1], totalPages: 1, totalResults: 1),
     similarData: MovieResponse(
         page: 1, results: [testSimilar1], totalPages: 1, totalResults: 1));
+
+const testPicture1backdrop = Picture(
+    aspectRatio: 1.778,
+    height: 2160,
+    iso: 'en',
+    filePath: '/bmlkLCjrIWnnZzdAQ4uNPG9JFdj.jpg',
+    voteAverage: 5.384,
+    voteCount: 2,
+    width: 3840);
+
+const testPicture2logo = Picture(
+    aspectRatio: 1.672,
+    height: 1298,
+    iso: 'en',
+    filePath: '/4MdzluUXHjgVRwRRNh5vSPq0TB5.png',
+    voteAverage: 5.312,
+    voteCount: 1,
+    width: 2170);
+
+const testPicture3poster = Picture(
+    aspectRatio: 0.667,
+    height: 3000,
+    iso: 'en',
+    filePath: '/qhb1qOilapbapxWQn9jtRCMwXJF.jpg',
+    voteAverage: 5.372,
+    voteCount: 37,
+    width: 2000);
+
+const testPicture4poster = Picture(
+    aspectRatio: 0.667,
+    height: 2100,
+    iso: 'zh',
+    filePath: '/iBh9D95rKBj3cbUM2gYIL0NLW57.jpg',
+    voteAverage: 5.586,
+    voteCount: 7,
+    width: 1400);
+
+const testPictures = Pictures(
+    backdrops: [testPicture1backdrop],
+    logos: [testPicture2logo],
+    posters: [testPicture3poster, testPicture4poster]);
+
+final testMovie3 = Movie(
+    adult: false,
+    backdropPath: '/yyFc8Iclt2jxPmLztbP617xXllT.jpg',
+    id: 787699,
+    originalLanguage: 'en',
+    originalTitle: 'Wonka',
+    overview:
+    'Willy Wonka – chock-full of ideas and determined to change the world one delectable bite at a time – is proof that the best things in life begin with a dream, and if you’re lucky enough to meet Willy Wonka, anything is possible.',
+    popularity: 603.503,
+    posterPath: '/qhb1qOilapbapxWQn9jtRCMwXJF.jpg',
+    releaseDate: DateTime.parse('2023-12-06'),
+    title: 'Wonka',
+    video: false,
+    voteAverage: 7.215,
+    voteCount: 2657);
+
+final testMovieNow = MovieNow(
+    adult: false,
+    backdropPath: '/yyFc8Iclt2jxPmLztbP617xXllT.jpg',
+    id: 787699,
+    originalLanguage: 'en',
+    originalTitle: 'Wonka',
+    overview:
+        'Willy Wonka – chock-full of ideas and determined to change the world one delectable bite at a time – is proof that the best things in life begin with a dream, and if you’re lucky enough to meet Willy Wonka, anything is possible.',
+    popularity: 603.503,
+    posterPath: '/qhb1qOilapbapxWQn9jtRCMwXJF.jpg',
+    releaseDate: DateTime.parse('2023-12-06'),
+    title: 'Wonka',
+    video: false,
+    voteAverage: 7.215,
+    voteCount: 2657,
+    pictures: testPictures);
