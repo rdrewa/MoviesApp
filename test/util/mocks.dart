@@ -12,6 +12,8 @@ import 'package:movies_app/feature/details/domain/usecase/remove_from_watch_usec
 import 'package:movies_app/feature/home/domain/usecase/get_popular_usecase.dart';
 import 'package:movies_app/feature/home/domain/usecase/get_top_rated_usecase.dart';
 import 'package:movies_app/feature/home/domain/usecase/get_trending_usecase.dart';
+import 'package:movies_app/feature/now/domain/usecase/get_now_usecase.dart';
+import 'package:movies_app/feature/watch/domain/usecase/get_watch_list_usecase.dart';
 
 class MockMovieRepository extends Mock implements MovieRepository {}
 
@@ -36,3 +38,7 @@ class MockAddToWatchUsecase extends Mock implements AddToWatchUsecase {}
 class MockRemoveFromWatchUsecase extends Mock implements RemoveFromWatchUsecase {}
 
 class MockIsOnWatchUsecase extends Mock implements IsOnWatchUsecase {}
+
+class MockGetWatchListUsecase extends Mock implements GetWatchListUsecase {}
+
+class MockGetNowUsecase extends Mock implements GetNowUsecase {}
