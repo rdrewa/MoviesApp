@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:movies_app/feature/now/domain/model/movie_now.dart';
 import 'package:retrofit/http.dart';
 
-import '../../../../common/data/model/movie_response.dart';
+import '../../../../now/domain/model/movie_now.dart';
 import '../../../../details/domain/model/movie_details.dart';
+import '../../../data/model/movie_response.dart';
 
 part 'movie_service.g.dart';
 
 @RestApi()
 abstract class MovieService {
-  factory MovieService(Dio dio) = _MovieService;
+  factory MovieService(Dio dio, {String baseUrl}) = _MovieService;
 
   @GET('trending/all/week')
   Future<MovieResponse> getTrendingList();
