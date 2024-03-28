@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'picture.g.dart';
 
 @JsonSerializable()
-class Picture {
+class Picture extends Equatable {
   @JsonKey(name: 'aspect_ratio')
   final double aspectRatio;
   final int height;
@@ -17,7 +18,7 @@ class Picture {
   final int voteCount;
   final int width;
 
-  Picture({
+  const Picture({
     required this.aspectRatio,
     required this.height,
     this.iso,
@@ -27,8 +28,12 @@ class Picture {
     required this.width,
   });
 
-  factory Picture.fromJson(Map<String, dynamic> data) => _$PictureFromJson(data);
+  factory Picture.fromJson(Map<String, dynamic> data) =>
+      _$PictureFromJson(data);
 
   Map<String, dynamic> toJson() => _$PictureToJson(this);
 
+  @override
+  List<Object?> get props =>
+      [aspectRatio, height, iso, filePath, voteAverage, voteCount, width];
 }
