@@ -4,6 +4,7 @@ import 'package:movies_app/feature/details/data/model/review_response.dart';
 
 import '../../../common/data/model/movie_response.dart';
 import '../../../common/domain/model/movie.dart';
+import '../../../common/util/movie_util.dart';
 import 'cast.dart';
 import 'credits.dart';
 import 'genre.dart';
@@ -21,15 +22,18 @@ class MovieDetails extends Equatable {
   final int id;
   @JsonKey(name: 'original_language')
   final String originalLanguage;
-  @JsonKey(name: 'original_title', readValue: _readOriginalTitle)
+  @JsonKey(name: 'original_title', readValue: MovieUtil.readOriginalTitle)
   final String originalTitle;
   final String overview;
   final double popularity;
   @JsonKey(name: 'poster_path')
-  final String posterPath;
-  @JsonKey(name: 'release_date', readValue: _readReleaseDate)
-  final DateTime releaseDate;
-  @JsonKey(readValue: _readTitle)
+  final String? posterPath;
+  @JsonKey(
+      name: 'release_date',
+      readValue: MovieUtil.readReleaseDate,
+      fromJson: MovieUtil.parseReleasedDate)
+  final DateTime? releaseDate;
+  @JsonKey(readValue: MovieUtil.readTitle)
   final String title;
   @JsonKey(defaultValue: false)
   final bool video;
@@ -54,8 +58,8 @@ class MovieDetails extends Equatable {
       required this.originalTitle,
       required this.overview,
       required this.popularity,
-      required this.posterPath,
-      required this.releaseDate,
+      this.posterPath,
+      this.releaseDate,
       required this.title,
       required this.video,
       required this.voteAverage,
@@ -97,13 +101,4 @@ class MovieDetails extends Equatable {
   List<Review> get reviews => reviewsData.results;
 
   List<Movie> get similar => similarData.results;
-
-  static Object _readOriginalTitle(Map<dynamic, dynamic> map, String key) =>
-      map[key] ?? (map['original_name'] ?? '');
-
-  static Object _readReleaseDate(Map<dynamic, dynamic> map, String key) =>
-      map[key] ?? (map['first_air_date'] ?? '');
-
-  static Object _readTitle(Map<dynamic, dynamic> map, String key) =>
-      map[key] ?? (map['name'] ?? '');
 }
