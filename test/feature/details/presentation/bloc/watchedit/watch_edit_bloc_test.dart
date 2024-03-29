@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:movies_app/core/error/failure.dart';
-import 'package:movies_app/feature/details/presentation/bloc/details/details_bloc.dart';
 import 'package:movies_app/feature/details/presentation/bloc/watchedit/watch_edit_bloc.dart';
 
 import '../../../../../util/data.dart';

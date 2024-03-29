@@ -2,9 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 
 import '../../../../core/error/failure.dart';
-import '../../data/source/local/watch_service.dart';
 import '../../domain/model/movie.dart';
 import '../../domain/repository/watch_repository.dart';
+import '../source/local/watch_service.dart';
 
 class WatchDbRepository implements WatchRepository {
   final WatchService watchService;

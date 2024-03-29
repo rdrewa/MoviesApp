@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:movies_app/feature/details/domain/model/movie_details.dart';
 
-import '../../../../feature/common/data/model/movie_response.dart';
-import '../../../../feature/common/data/source/remote/movie_service.dart';
 import '../../../../core/error/failure.dart';
-import '../../../common/domain/model/movie.dart';
+import '../../../details/domain/model/movie_details.dart';
+import '../../../now/domain/model/movie_now.dart';
+import '../../domain/model/movie.dart';
 import '../../domain/repository/movie_repository.dart';
+import '../model/movie_response.dart';
+import '../source/remote/movie_service.dart';
 
 class MovieRestRepository implements MovieRepository {
-
   final MovieService service;
 
   MovieRestRepository(this.service);
@@ -51,5 +51,27 @@ class MovieRestRepository implements MovieRepository {
     } on Exception {
       return const Left(ServerFailure('Server Failure'));
     }
+  }
+
+  @override
+  Future<Either<Failure, List<MovieNow>>> getNowList() async {
+    try {
+      final MovieResponse responseData = await service.getNowList();
+      if (responseData.results.isEmpty) {
+        return Right(List<MovieNow>.empty());
+      }
+
+      final list = await _getNowParallel(responseData.results.take(3).toList());
+      return Right(list);
+    } on Exception {
+      return const Left(ServerFailure('Server Failure'));
+    }
+  }
+
+  Future<List<MovieNow>> _getNowParallel(List<Movie> movies) async {
+    List<Future<MovieNow>> futures =
+        movies.map((movie) => service.getMovieNow(movie.id)).toList();
+    final list = await Future.wait(futures);
+    return list;
   }
 }

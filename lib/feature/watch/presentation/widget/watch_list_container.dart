@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/feature/watch/presentation/widget/watch_item.dart';
 
 import '../../../common/domain/model/movie.dart';
+import '../widget/watch_item.dart';
 
 class WatchListContainer extends StatelessWidget {
   final List<Movie> list;
