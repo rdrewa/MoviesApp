@@ -14,14 +14,20 @@ class TrendingMovies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height * 0.35;
     return BlocProvider(
       create: (_) => sl<TrendingBloc>()..add(GetTrendingEvent()),
       child: BlocBuilder<TrendingBloc, TrendingState>(
           builder: (context, state) => switch (state) {
                 TrendingInitial() => const SizedBox.shrink(),
-                TrendingEmpty() => EmptyBox(message: 'home.trending.empty'.tr()),
-                TrendingLoading() => const ProgressWheel(),
-                TrendingLoaded() => SliderList(title: 'home.trending.title'.tr(), list: state.data,),
+                TrendingEmpty() =>
+                  EmptyBox(message: 'home.trending.empty'.tr()),
+                TrendingLoading() => ProgressWheel(height: height),
+                TrendingLoaded() => SliderList(
+                    title: 'home.trending.title'.tr(),
+                    list: state.data,
+                    height: height,
+                  ),
                 TrendingFailure() => ErrorBox(message: state.message),
               }),
     );

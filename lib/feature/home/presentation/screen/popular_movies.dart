@@ -20,7 +20,7 @@ class PopularMovies extends StatelessWidget {
           builder: (context, state) => switch (state) {
                 PopularInitial() => const SizedBox.shrink(),
                 PopularEmpty() => EmptyBox(message: 'home.popular.empty'.tr()),
-                PopularLoading() => const ProgressWheel(),
+                PopularLoading() => const ProgressWheel(height: 250),
                 PopularLoaded() => SkyscraperList(
                     title: 'home.popular.title'.tr(),
                     list: state.data,
