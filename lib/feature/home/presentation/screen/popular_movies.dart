@@ -22,7 +22,7 @@ class PopularMovies extends StatelessWidget {
                 PopularEmpty() => const Text('Empty Popular Movies list'),
                 PopularLoading() => const ProgressWheel(),
                 PopularLoaded() => SkyscraperList(
-                    title: 'Popular Movie',
+                    title: 'Popular',
                     list: state.data,
                   ),
                 PopularFailure() => Text(state.message),

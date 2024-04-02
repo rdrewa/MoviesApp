@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../widget/popular_movies.dart';
-import '../widget/top_rated_movies.dart';
+import 'popular_movies.dart';
+import 'top_rated_movies.dart';
 import 'trending_movies.dart';
 
 class HomeScreen extends StatelessWidget {

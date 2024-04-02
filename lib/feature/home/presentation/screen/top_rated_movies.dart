@@ -2,11 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import '../../../../app/di.dart';
 import '../../../common/presentation/widget/progress_wheel.dart';
 import '../bloc/toprated/top_rated_bloc.dart';
-import 'movie_item.dart';
+import '../widget/skyscraper/skyscraper_list.dart';
 
 class TopRatedMovies extends StatelessWidget {
   const TopRatedMovies({super.key});
@@ -22,16 +21,9 @@ class TopRatedMovies extends StatelessWidget {
                   ),
                 TopRatedEmpty() => const Text('Empty TopRated Movies list'),
                 TopRatedLoading() => const ProgressWheel(),
-                TopRatedLoaded() => Column(
-                    children: [
-                      const Text('TopRated Movies: Loaded'),
-                      ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: state.data.length,
-                          itemBuilder: (BuildContext context, int index) =>
-                              MovieItem(data: state.data[index], background: Colors.green,))
-                    ],
+                TopRatedLoaded() => SkyscraperList(
+                    title: 'Top Rated',
+                    list: state.data,
                   ),
                 TopRatedFailure() => Text(state.message),
               }),
