@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/extension/string_image_extension.dart';
-import '../../../common/domain/model/movie.dart';
-import 'rate_star.dart';
-import 'release_date_text.dart';
-import 'title_text.dart';
+import '../../../../../core/extension/string_image_extension.dart';
+import '../../../../common/domain/model/movie.dart';
+import '../rate_star.dart';
+import '../release_date_text.dart';
+import 'slider_title.dart';
 
 class SliderItem extends StatelessWidget {
   final Movie item;
@@ -31,7 +31,7 @@ class SliderItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TitleText(title: item.title),
+                SliderTitle(title: item.title),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

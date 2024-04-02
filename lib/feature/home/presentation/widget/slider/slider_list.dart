@@ -1,7 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:movies_app/feature/home/presentation/widget/headline_text.dart';
 
-import '../../../common/domain/model/movie.dart';
+import '../../../../common/domain/model/movie.dart';
 import 'slider_item.dart';
 
 class SliderList extends StatelessWidget {
@@ -26,7 +27,7 @@ class SliderList extends StatelessWidget {
             )),
         Padding(
           padding: const EdgeInsets.only(left: 10, top: 20),
-          child: Text(title, style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white),),
+          child: HeadlineText(text: title,),
         ),
       ],
     );
