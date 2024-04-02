@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../details/domain/model/movie_details.dart';
+import '../../util/movie_util.dart';
 
 part 'movie.g.dart';
 
@@ -21,7 +22,7 @@ class Movie extends Equatable {
   @JsonKey(name: 'original_language')
   final String originalLanguage;
   @HiveField(3)
-  @JsonKey(name: 'original_title', readValue: _readOriginalTitle)
+  @JsonKey(name: 'original_title', readValue: MovieUtil.readOriginalTitle)
   final String originalTitle;
   @HiveField(4)
   final String overview;
@@ -33,11 +34,11 @@ class Movie extends Equatable {
   @HiveField(7)
   @JsonKey(
       name: 'release_date',
-      readValue: _readReleaseDate,
-      fromJson: _parseReleasedDate)
+      readValue: MovieUtil.readReleaseDate,
+      fromJson: MovieUtil.parseReleasedDate)
   final DateTime? releaseDate;
   @HiveField(8)
-  @JsonKey(readValue: _readTitle)
+  @JsonKey(readValue: MovieUtil.readTitle)
   final String title;
   @HiveField(9)
   @JsonKey(defaultValue: false)
@@ -109,16 +110,4 @@ class Movie extends Equatable {
   bool? get stringify => true;
 
   int get key => id;
-
-  static Object _readOriginalTitle(Map<dynamic, dynamic> map, String key) =>
-      map[key] ?? (map['original_name'] ?? '');
-
-  static Object _readReleaseDate(Map<dynamic, dynamic> map, String key) =>
-      map[key] ?? (map['first_air_date'] ?? '');
-
-  static Object _readTitle(Map<dynamic, dynamic> map, String key) =>
-      map[key] ?? (map['name'] ?? '');
-
-  static DateTime? _parseReleasedDate(String releaseDate) =>
-      releaseDate.isNotEmpty ? DateTime.parse(releaseDate) : null;
 }
