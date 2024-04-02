@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/extension/string_image_extension.dart';
@@ -24,9 +25,10 @@ class SliderItem extends StatelessWidget {
           width: width,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage(item.backdropPath!.imageW500))),
+                fit: BoxFit.cover,
+                  image: CachedNetworkImageProvider(item.backdropPath!.imageW500))),
           child: Container(
-            padding: const EdgeInsets.only(right: 16, left: 16, bottom: 20),
+            padding: const EdgeInsets.only(right: 16, left: 16,  bottom: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
