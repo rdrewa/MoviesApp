@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/di.dart';
+import '../../../common/presentation/widget/empty_box.dart';
+import '../../../common/presentation/widget/error_box.dart';
 import '../../../common/presentation/widget/progress_wheel.dart';
 import '../bloc/popular/popular_bloc.dart';
 import '../widget/skyscraper/skyscraper_list.dart';
@@ -16,16 +18,15 @@ class PopularMovies extends StatelessWidget {
       create: (_) => sl<PopularBloc>()..add(GetPopularEvent()),
       child: BlocBuilder<PopularBloc, PopularState>(
           builder: (context, state) => switch (state) {
-                PopularInitial() => Center(
-                    child: const Text('home.title').tr(),
-                  ),
-                PopularEmpty() => const Text('Empty Popular Movies list'),
+                PopularInitial() => const SizedBox.shrink(),
+                PopularEmpty() =>
+                  const EmptyBox(message: 'Empty Popular Movies list'),
                 PopularLoading() => const ProgressWheel(),
                 PopularLoaded() => SkyscraperList(
                     title: 'Popular',
                     list: state.data,
                   ),
-                PopularFailure() => Text(state.message),
+                PopularFailure() => ErrorBox(message: state.message),
               }),
     );
   }
