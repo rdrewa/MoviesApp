@@ -19,11 +19,10 @@ class PopularMovies extends StatelessWidget {
       child: BlocBuilder<PopularBloc, PopularState>(
           builder: (context, state) => switch (state) {
                 PopularInitial() => const SizedBox.shrink(),
-                PopularEmpty() =>
-                  const EmptyBox(message: 'Empty Popular Movies list'),
+                PopularEmpty() => EmptyBox(message: 'home.popular.empty'.tr()),
                 PopularLoading() => const ProgressWheel(),
                 PopularLoaded() => SkyscraperList(
-                    title: 'Popular',
+                    title: 'home.popular.title'.tr(),
                     list: state.data,
                   ),
                 PopularFailure() => ErrorBox(message: state.message),

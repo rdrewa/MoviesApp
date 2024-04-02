@@ -19,9 +19,9 @@ class TrendingMovies extends StatelessWidget {
       child: BlocBuilder<TrendingBloc, TrendingState>(
           builder: (context, state) => switch (state) {
                 TrendingInitial() => const SizedBox.shrink(),
-                TrendingEmpty() => const EmptyBox(message: 'Empty Trending Movies list'),
+                TrendingEmpty() => EmptyBox(message: 'home.trending.empty'.tr()),
                 TrendingLoading() => const ProgressWheel(),
-                TrendingLoaded() => SliderList(title: 'Trending', list: state.data,),
+                TrendingLoaded() => SliderList(title: 'home.trending.title'.tr(), list: state.data,),
                 TrendingFailure() => ErrorBox(message: state.message),
               }),
     );

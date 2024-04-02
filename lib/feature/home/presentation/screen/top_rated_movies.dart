@@ -19,10 +19,11 @@ class TopRatedMovies extends StatelessWidget {
       child: BlocBuilder<TopRatedBloc, TopRatedState>(
           builder: (context, state) => switch (state) {
                 TopRatedInitial() => const SizedBox.shrink(),
-                TopRatedEmpty() => const EmptyBox(message: 'Empty TopRated Movies list'),
+                TopRatedEmpty() =>
+                  EmptyBox(message: 'home.toprated.empty'.tr()),
                 TopRatedLoading() => const ProgressWheel(),
                 TopRatedLoaded() => SkyscraperList(
-                    title: 'Top Rated',
+                    title: 'home.toprated.title'.tr(),
                     list: state.data,
                   ),
                 TopRatedFailure() => ErrorBox(message: state.message),
