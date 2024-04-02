@@ -8,6 +8,18 @@
     "watch": "watch"
   },
   "home": {
-    "title": "Movie BLoC App: Home"
+    "title": "Movie BLoC App: Home",
+    "trending": {
+      "title": "Trending",
+      "empty": "Empty Trending list"
+    },
+    "popular": {
+      "title": "Popular",
+      "empty": "Empty Popular list"
+    },
+    "toprated": {
+      "title": "Top Rated",
+      "empty": "Empty Top Rated list"
+    }
   }
 }
