@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/di.dart';
+import '../../../common/presentation/widget/empty_box.dart';
+import '../../../common/presentation/widget/error_box.dart';
 import '../../../common/presentation/widget/progress_wheel.dart';
 import '../bloc/toprated/top_rated_bloc.dart';
 import '../widget/skyscraper/skyscraper_list.dart';
@@ -16,16 +18,15 @@ class TopRatedMovies extends StatelessWidget {
       create: (_) => sl<TopRatedBloc>()..add(GetTopRatedEvent()),
       child: BlocBuilder<TopRatedBloc, TopRatedState>(
           builder: (context, state) => switch (state) {
-                TopRatedInitial() => Center(
-                    child: const Text('home.title').tr(),
-                  ),
-                TopRatedEmpty() => const Text('Empty TopRated Movies list'),
-                TopRatedLoading() => const ProgressWheel(),
+                TopRatedInitial() => const SizedBox.shrink(),
+                TopRatedEmpty() =>
+                  EmptyBox(message: 'home.toprated.empty'.tr()),
+                TopRatedLoading() => const ProgressWheel(height: 250,),
                 TopRatedLoaded() => SkyscraperList(
-                    title: 'Top Rated',
+                    title: 'home.toprated.title'.tr(),
                     list: state.data,
                   ),
-                TopRatedFailure() => Text(state.message),
+                TopRatedFailure() => ErrorBox(message: state.message),
               }),
     );
   }
