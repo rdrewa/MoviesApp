@@ -5,14 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../app/di.dart';
 import '../../../common/presentation/widget/progress_wheel.dart';
 import '../bloc/trending/trending_bloc.dart';
-import '../widget/slider_list.dart';
+import '../widget/slider/slider_list.dart';
 
 class TrendingMovies extends StatelessWidget {
   const TrendingMovies({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return BlocProvider(
       create: (_) => sl<TrendingBloc>()..add(GetTrendingEvent()),
       child: BlocBuilder<TrendingBloc, TrendingState>(
