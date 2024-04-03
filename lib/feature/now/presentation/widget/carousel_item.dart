@@ -35,9 +35,9 @@ class CarouselItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final backdrops = item.pictures.backdrops.take(6).toList();
-    final posters = item.pictures.posters.take(8).toList();
-    final logos = item.pictures.logos.take(3).toList();
+    final backdrops = item.pictures.backdrops/*.take(6).toList()*/;
+    final posters = item.pictures.posters/*.take(8).toList()*/;
+    final logos = item.pictures.logos/*.take(3).toList()*/;
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Container(
@@ -46,82 +46,74 @@ class CarouselItem extends StatelessWidget {
           color: Colors.grey,
         ),
         height: height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              width: double.maxFinite,
-              height: 180.0,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: CachedNetworkImageProvider(
-                        item.backdropPath!.imageW500)),
-                borderRadius: const BorderRadius.all(Radius.circular(12.0)),
-              ),
-              child: Padding(
-                padding: EdgeInsets.only(left: 10, top: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      item.title,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineMedium
-                          ?.copyWith(color: Colors.white),
-                    )
-                  ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                width: double.maxFinite,
+                height: 180.0,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: CachedNetworkImageProvider(
+                          item.backdropPath!.imageW500)),
+                  borderRadius: const BorderRadius.all(Radius.circular(12.0)),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(left: 10, top: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        item.title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(color: Colors.white),
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-
-            Text('Backdrops'),
-            Expanded(
-              child: GridView.count(
-                crossAxisCount: 3,
-                physics: const ClampingScrollPhysics(),
+              Text('Backdrops'),
+              GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3),
+                physics: const NeverScrollableScrollPhysics(),
                 // physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: false,
-                children: backdrops
-                    .map((picture) => MoviePicture(
-                        url: picture.filePath.imageW500,
-                        color:
-                            colors[backdrops.indexOf(picture) % colors.length]))
-                    .toList(),
+                shrinkWrap: true,
+                itemCount: backdrops.length,
+                itemBuilder: (context, index) => MoviePicture(
+                    url: backdrops[index].filePath.imageW500,
+                    color: colors[index % colors.length]),
               ),
-            ),
-            Text('Posters'),
-            Expanded(
-              child: GridView.count(
-                crossAxisCount: 4,
-                physics: const ClampingScrollPhysics(),
+              Text('Posters'),
+              GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4),
+                physics: const NeverScrollableScrollPhysics(),
                 // physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: false,
-                children: posters
-                    .map((picture) => MoviePicture(
-                    url: picture.filePath.imageW500,
-                    color:
-                    colors[posters.indexOf(picture) % colors.length]))
-                    .toList(),
+                shrinkWrap: true,
+                itemCount: posters.length,
+                itemBuilder: (context, index) => MoviePicture(
+                    url: posters[index].filePath.imageW500,
+                    color: colors[index % colors.length]),
               ),
-            ),
-            Text('Logos'),
-            Expanded(
-              child: GridView.count(
-                crossAxisCount: 3,
-                physics: const ClampingScrollPhysics(),
+              Text('Logos'),
+              GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3),
+                physics: const NeverScrollableScrollPhysics(),
                 // physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: false,
-                children: logos
-                    .map((picture) => MoviePicture(
-                    url: picture.filePath.imageW500,
-                    color:
-                    colors[logos.indexOf(picture) % colors.length]))
-                    .toList(),
-              ),
-            )
-          ],
+                shrinkWrap: true,
+                itemCount: logos.length,
+                itemBuilder: (context, index) => MoviePicture(
+                    url: logos[index].filePath.imageW500,
+                    color: colors[index % colors.length]),
+              )
+            ],
+          ),
         ),
       ),
     );
