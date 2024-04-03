@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -35,9 +33,9 @@ class CarouselItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final backdrops = item.pictures.backdrops/*.take(6).toList()*/;
-    final posters = item.pictures.posters/*.take(8).toList()*/;
-    final logos = item.pictures.logos/*.take(3).toList()*/;
+    final backdrops = item.pictures.backdrops /*.take(6).toList()*/;
+    final posters = item.pictures.posters /*.take(8).toList()*/;
+    final logos = item.pictures.logos /*.take(3).toList()*/;
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Container(
@@ -61,7 +59,7 @@ class CarouselItem extends StatelessWidget {
                   borderRadius: const BorderRadius.all(Radius.circular(12.0)),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(left: 10, top: 20),
+                  padding: const EdgeInsets.only(left: 10, top: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -76,42 +74,71 @@ class CarouselItem extends StatelessWidget {
                   ),
                 ),
               ),
-              Text('Backdrops'),
-              GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3),
-                physics: const NeverScrollableScrollPhysics(),
-                // physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: backdrops.length,
-                itemBuilder: (context, index) => MoviePicture(
-                    url: backdrops[index].filePath.imageW500,
-                    color: colors[index % colors.length]),
-              ),
-              Text('Posters'),
-              GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4),
-                physics: const NeverScrollableScrollPhysics(),
-                // physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: posters.length,
-                itemBuilder: (context, index) => MoviePicture(
-                    url: posters[index].filePath.imageW500,
-                    color: colors[index % colors.length]),
-              ),
-              Text('Logos'),
-              GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3),
-                physics: const NeverScrollableScrollPhysics(),
-                // physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: logos.length,
-                itemBuilder: (context, index) => MoviePicture(
-                    url: logos[index].filePath.imageW500,
-                    color: colors[index % colors.length]),
-              )
+              DefaultTabController(
+                  length: 3,
+                  child: SizedBox(
+                    height: 350,
+                    child: Column(
+                      children: [
+                        const TabBar(
+                            tabs: [
+                              Tab(
+                                text: "Backdrops",
+                              ),
+                              Tab(
+                                text: "Posters",
+                              ),
+                              Tab(
+                                text: "Logos",
+                              )
+                            ]),
+                        Expanded(
+                          child: TabBarView(
+                              physics: const NeverScrollableScrollPhysics(),
+                              children: [
+                                GridView.builder(
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 3),
+                                  physics: const ClampingScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: backdrops.length,
+                                  itemBuilder: (context, index) =>
+                                      MoviePicture(
+                                          url: backdrops[index]
+                                              .filePath
+                                              .imageW500,
+                                          color:
+                                              colors[index % colors.length]),
+                                ),
+                                GridView.builder(
+                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3),
+                                  physics: const ClampingScrollPhysics(),
+                                  // physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: posters.length,
+                                  itemBuilder: (context, index) => MoviePicture(
+                                      url: posters[index].filePath.imageW500,
+                                      color: colors[index % colors.length]),
+                                ),
+                                GridView.builder(
+                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3),
+                                  physics: const ClampingScrollPhysics(),
+                                  // physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: logos.length,
+                                  itemBuilder: (context, index) => MoviePicture(
+                                      url: logos[index].filePath.imageW500,
+                                      color: colors[index % colors.length]),
+                                )
+                              ]),
+                        )
+                      ],
+                    ),
+                  )),
+              // Text(item.overview)
             ],
           ),
         ),
@@ -140,3 +167,17 @@ class MoviePicture extends StatelessWidget {
     );
   }
 }
+
+/*
+              GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3),
+                physics: const NeverScrollableScrollPhysics(),
+                // physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: backdrops.length,
+                itemBuilder: (context, index) => MoviePicture(
+                    url: backdrops[index].filePath.imageW500,
+                    color: colors[index % colors.length]),
+              ),
+ */
