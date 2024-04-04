@@ -1,9 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../app/app_routes.dart';
 import '../../domain/model/movie_now.dart';
 import 'carousel_item.dart';
-
 
 class CarouselList extends StatelessWidget {
   final List<MovieNow> list;
@@ -16,7 +17,11 @@ class CarouselList extends StatelessWidget {
     final double height = size.height - 40;
     return CarouselSlider(
         items: list
-            .map((item) => CarouselItem(item: item, height: height))
+            .map((item) => CarouselItem(
+                item: item,
+                height: height,
+                onTap: () => context.goNamed(AppRoutes.details,
+                    pathParameters: {'id': item.id.toString()})))
             .toList(),
         options: CarouselOptions(
           height: height,
