@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/feature/watch/presentation/widget/watch_overview.dart';
-import 'package:movies_app/feature/watch/presentation/widget/watch_title.dart';
 
 import '../../../../core/extension/string_image_extension.dart';
 import '../../../home/presentation/widget/rate_star.dart';
 import '../../../home/presentation/widget/release_date_text.dart';
 import '../../../common/domain/model/movie.dart';
+import 'watch_overview.dart';
+import 'watch_title.dart';
 
 class WatchItem extends StatelessWidget {
   final Movie item;
