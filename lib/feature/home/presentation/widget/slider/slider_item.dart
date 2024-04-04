@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/extension/string_image_extension.dart';
 import '../../../../common/domain/model/movie.dart';
-import '../rate_star.dart';
-import '../release_date_text.dart';
+import '../../../../common/presentation/widget/rate_star.dart';
+import '../../../../common/presentation/widget/release_date_text.dart';
 import 'slider_title.dart';
 
 class SliderItem extends StatelessWidget {

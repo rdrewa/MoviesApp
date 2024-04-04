@@ -3,7 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../../../core/extension/string_image_extension.dart';
 import '../../../../common/domain/model/movie.dart';
-import '../rate_star.dart';
+import '../../../../common/presentation/widget/rate_star.dart';
 import 'skyscraper_title.dart';
 
 class SkyscraperItem extends StatelessWidget {
