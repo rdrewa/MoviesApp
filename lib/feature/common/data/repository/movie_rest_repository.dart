@@ -61,7 +61,7 @@ class MovieRestRepository implements MovieRepository {
         return Right(List<MovieNow>.empty());
       }
 
-      final list = await _getNowParallel(responseData.results.take(3).toList());
+      final list = await _getNowParallel(responseData.results.take(8).toList());
       return Right(list);
     } on Exception {
       return const Left(ServerFailure('Server Failure'));

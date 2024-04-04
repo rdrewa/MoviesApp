@@ -21,5 +21,12 @@
       "title": "Top Rated",
       "empty": "Empty Top Rated list"
     }
+  },
+  "now": {
+    "pictures": {
+      "backdrops": "Backdrops",
+      "posters": "Posters",
+      "logos": "Logos"
+    }
   }
 }

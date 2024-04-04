@@ -12,23 +12,24 @@ class SliderItem extends StatelessWidget {
   final double width;
   final Function() onTap;
 
-  const SliderItem({super.key,
-    required this.item,
-    required this.width,
-    required this.onTap});
+  const SliderItem(
+      {super.key,
+      required this.item,
+      required this.width,
+      required this.onTap});
 
   @override
-  Widget build(BuildContext context) =>
-      GestureDetector(
+  Widget build(BuildContext context) => GestureDetector(
         onTap: onTap,
         child: Container(
           width: width,
           decoration: BoxDecoration(
               image: DecorationImage(
-                fit: BoxFit.cover,
-                  image: CachedNetworkImageProvider(item.backdropPath!.imageW500))),
+                  fit: BoxFit.cover,
+                  image: CachedNetworkImageProvider(
+                      item.backdropPath!.imageW500))),
           child: Container(
-            padding: const EdgeInsets.only(right: 16, left: 16,  bottom: 10),
+            padding: const EdgeInsets.only(right: 16, left: 16, bottom: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
