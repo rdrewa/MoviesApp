@@ -1,5 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../core/extension/string_image_extension.dart';
 import '../../domain/model/movie_now.dart';
@@ -68,21 +69,17 @@ class CarouselItem extends StatelessWidget {
                               labelStyle: Theme.of(context)
                                   .textTheme
                                   .labelMedium
-                                  ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                                  ?.copyWith(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
                               unselectedLabelStyle: Theme.of(context)
                                   .textTheme
                                   .labelMedium
                                   ?.copyWith(color: Colors.white70),
                               tabs: [
-                                Tab(
-                                  text: "Backdrops",
-                                ),
-                                Tab(
-                                  text: "Posters",
-                                ),
-                                Tab(
-                                  text: "Logos",
-                                )
+                                Tab(text: 'now.pictures.backdrops'.tr()),
+                                Tab(text: 'now.pictures.posters'.tr()),
+                                Tab(text: 'now.pictures.logos'.tr())
                               ]),
                           Expanded(
                             child: TabBarView(
