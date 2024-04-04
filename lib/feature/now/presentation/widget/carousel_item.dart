@@ -39,7 +39,7 @@ class CarouselItem extends StatelessWidget {
                         fit: BoxFit.cover,
                         image: CachedNetworkImageProvider(
                             item.backdropPath!.imageW500)),
-                    borderRadius: const BorderRadius.all(Radius.circular(12.0)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10, top: 20),
@@ -60,20 +60,30 @@ class CarouselItem extends StatelessWidget {
                 DefaultTabController(
                     length: 3,
                     child: SizedBox(
-                      height: 400,
+                      height: 390,
                       child: Column(
                         children: [
-                          const TabBar(tabs: [
-                            Tab(
-                              text: "Backdrops",
-                            ),
-                            Tab(
-                              text: "Posters",
-                            ),
-                            Tab(
-                              text: "Logos",
-                            )
-                          ]),
+                          TabBar(
+                              indicatorColor: Colors.white,
+                              labelStyle: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium
+                                  ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                              unselectedLabelStyle: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium
+                                  ?.copyWith(color: Colors.white70),
+                              tabs: [
+                                Tab(
+                                  text: "Backdrops",
+                                ),
+                                Tab(
+                                  text: "Posters",
+                                ),
+                                Tab(
+                                  text: "Logos",
+                                )
+                              ]),
                           Expanded(
                             child: TabBarView(
                                 physics: const NeverScrollableScrollPhysics(),
@@ -81,14 +91,17 @@ class CarouselItem extends StatelessWidget {
                                   PicturesGrid(
                                       count: 3,
                                       list: item.pictures.backdrops,
+                                      ratio: 1.778,
                                       provider: _backdropProvider),
                                   PicturesGrid(
                                       count: 4,
                                       list: item.pictures.posters,
+                                      ratio: 0.667,
                                       provider: _posterProvider),
                                   PicturesGrid(
                                       count: 3,
                                       list: item.pictures.logos,
+                                      ratio: 3.409,
                                       provider: _logoProvider)
                                 ]),
                           )
