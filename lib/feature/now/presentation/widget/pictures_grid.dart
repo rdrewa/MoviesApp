@@ -6,43 +6,27 @@ import 'movie_picture.dart';
 class PicturesGrid extends StatelessWidget {
   final int count;
   final List<Picture> list;
+  final double ratio;
   final String Function(Picture) provider;
 
-  final _colors = [
-    Colors.yellow,
-    Colors.red,
-    Colors.grey,
-    Colors.blue,
-    Colors.amber,
-    Colors.blueGrey,
-    Colors.white70,
-    Colors.indigo,
-    Colors.purple,
-    Colors.blueGrey,
-    Colors.orange,
-    Colors.purpleAccent,
-    Colors.blue,
-    Colors.amber,
-    Colors.blueGrey,
-    Colors.white70,
-    Colors.indigo,
-    Colors.purple,
-  ];
-
-  PicturesGrid(
+  const PicturesGrid(
       {super.key,
       required this.count,
       required this.list,
+      required this.ratio,
       required this.provider});
 
   @override
   Widget build(BuildContext context) => GridView.builder(
-        gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: count),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: count,
+            mainAxisSpacing: 2,
+            crossAxisSpacing: 4,
+            childAspectRatio: ratio),
         physics: const ClampingScrollPhysics(),
         shrinkWrap: true,
         itemCount: list.length,
-        itemBuilder: (context, index) => MoviePicture(
-            url: provider(list[index]), color: _colors[index % _colors.length]),
+        itemBuilder: (context, index) =>
+            MoviePicture(url: provider(list[index])),
       );
 }
