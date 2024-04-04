@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../app/app_routes.dart';
 import '../../../../common/domain/model/movie.dart';
 import '../headline_text.dart';
 import 'slider_item.dart';
@@ -22,17 +24,14 @@ class SliderList extends StatelessWidget {
           CarouselSlider.builder(
               itemCount: list.length,
               itemBuilder: (context, index, realIndex) => SliderItem(
-                  item: list[index], width: double.maxFinite, onTap: () {}),
-              options: CarouselOptions(
-                viewportFraction: 1,
-                height: height,
-                // autoPlay: true,
-              )),
+                  item: list[index],
+                  width: double.maxFinite,
+                  onTap: () => context.goNamed(AppRoutes.details,
+                      pathParameters: {'id': list[index].id.toString()})),
+              options: CarouselOptions(viewportFraction: 1, height: height)),
           Padding(
             padding: const EdgeInsets.only(left: 10, top: 20),
-            child: HeadlineText(
-              text: title,
-            ),
+            child: HeadlineText(text: title),
           ),
         ],
       );

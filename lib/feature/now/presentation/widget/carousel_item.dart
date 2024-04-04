@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -10,8 +11,9 @@ import 'pictures_grid.dart';
 class CarouselItem extends StatelessWidget {
   final MovieNow item;
   final double height;
+  final Function() onTap;
 
-  const CarouselItem({super.key, required this.item, required this.height});
+  const CarouselItem({super.key, required this.item, required this.height, required this.onTap});
 
   String _backdropProvider(Picture picture) => picture.filePath.imageW1280;
 
@@ -32,29 +34,32 @@ class CarouselItem extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  width: double.maxFinite,
-                  height: 180.0,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: CachedNetworkImageProvider(
-                            item.backdropPath!.imageW500)),
-                    borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10, top: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          item.title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineMedium
-                              ?.copyWith(color: Colors.white),
-                        )
-                      ],
+                GestureDetector(
+                  onTap: onTap,
+                  child: Container(
+                    width: double.maxFinite,
+                    height: 180.0,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: CachedNetworkImageProvider(
+                              item.backdropPath!.imageW500)),
+                      borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10, top: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            item.title,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineMedium
+                                ?.copyWith(color: Colors.white),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
