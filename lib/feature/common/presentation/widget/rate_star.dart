@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/core/extension/build_context_theme_extension.dart';
+
 class RateStar extends StatelessWidget {
   final double voteAverage;
 
@@ -8,17 +10,9 @@ class RateStar extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Row(
         children: [
-          const Icon(Icons.star, color: Colors.yellowAccent,),
-          const SizedBox(
-            width: 4,
-          ),
-          Text(
-            voteAverage.toString(),
-            style: Theme.of(context)
-                .textTheme
-                .labelMedium
-                ?.copyWith(color: Colors.yellowAccent),
-          )
+          Icon(Icons.star, color: context.colorScheme.tertiary),
+          const SizedBox(width: 4),
+          Text(voteAverage.toString(), style: context.labelMedium)
         ],
       );
 }
