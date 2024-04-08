@@ -146,6 +146,8 @@ final testMovieDetails = MovieDetails(
     reviewsData: ReviewResponse(
         page: 1, results: [testReview1], totalPages: 1, totalResults: 1),
     similarData: MovieResponse(
+        page: 1, results: [testSimilar1], totalPages: 1, totalResults: 1),
+    recommendationsData: MovieResponse(
         page: 1, results: [testSimilar1], totalPages: 1, totalResults: 1));
 
 const testPicture1backdrop = Picture(
@@ -196,7 +198,7 @@ final testMovie3 = Movie(
     originalLanguage: 'en',
     originalTitle: 'Wonka',
     overview:
-    'Willy Wonka – chock-full of ideas and determined to change the world one delectable bite at a time – is proof that the best things in life begin with a dream, and if you’re lucky enough to meet Willy Wonka, anything is possible.',
+        'Willy Wonka – chock-full of ideas and determined to change the world one delectable bite at a time – is proof that the best things in life begin with a dream, and if you’re lucky enough to meet Willy Wonka, anything is possible.',
     popularity: 603.503,
     posterPath: '/qhb1qOilapbapxWQn9jtRCMwXJF.jpg',
     releaseDate: DateTime.parse('2023-12-06'),
