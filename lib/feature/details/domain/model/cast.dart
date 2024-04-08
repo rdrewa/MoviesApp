@@ -1,10 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../common/domain/model/skyscraper_data.dart';
+
 part 'cast.g.dart';
 
 @JsonSerializable()
-class Cast extends Equatable {
+class Cast extends Equatable implements SkyscraperData {
   final bool adult;
   final int gender;
   final int id;
@@ -63,4 +65,39 @@ class Cast extends Equatable {
         department,
         job
       ];
+
+  @JsonKey(includeFromJson: false)
+  @override
+  int get identifier => id;
+
+  @JsonKey(includeFromJson: false)
+  @override
+  bool get hasVote => false;
+
+  @JsonKey(includeFromJson: false)
+  @override
+  String? get imageUrl => profilePath;
+
+  @JsonKey(includeFromJson: false)
+  @override
+  String get label => name;
+
+  @JsonKey(includeFromJson: false)
+  @override
+  double get vote => 0.0;
+
+  @override
+  set identifier(int _) {}
+
+  @override
+  set hasVote(bool _) {}
+
+  @override
+  set imageUrl(String? _) {}
+
+  @override
+  set label(String _) {}
+
+  @override
+  set vote(double _) {}
 }

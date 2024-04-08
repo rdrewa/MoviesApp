@@ -6,8 +6,8 @@ import '../../../../app/di.dart';
 import '../../../common/presentation/widget/empty_box.dart';
 import '../../../common/presentation/widget/error_box.dart';
 import '../../../common/presentation/widget/progress_wheel.dart';
+import '../../../common/presentation/widget/skyscraper/skyscraper_list.dart';
 import '../bloc/toprated/top_rated_bloc.dart';
-import '../widget/skyscraper/skyscraper_list.dart';
 
 class TopRatedMovies extends StatelessWidget {
   const TopRatedMovies({super.key});

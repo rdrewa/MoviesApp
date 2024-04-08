@@ -29,6 +29,12 @@
     "title": "Do obejrzenia"
   },
   "details": {
-    "title": "Szczegóły"
+    "title": "Szczegóły",
+    "description": "Opis",
+    "cast": "Obsada",
+    "similar": "Podobne",
+    "recommendations": "Rekomendowane",
+    "review": "Recenzja",
+    "author": "Autor"
   }
 }

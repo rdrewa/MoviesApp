@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../app/app_routes.dart';
 import '../../../../common/domain/model/movie.dart';
-import '../headline_text.dart';
+import '../../../../common/presentation/widget/headline_text.dart';
 import 'slider_item.dart';
 
 class SliderList extends StatelessWidget {

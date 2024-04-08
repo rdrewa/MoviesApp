@@ -29,6 +29,12 @@
     "title": "Watchlist"
   },
   "details": {
-    "title": "Details"
+    "title": "Details",
+    "description": "Description",
+    "cast": "Cast",
+    "similar": "Similar",
+    "recommendations": "Recommendations",
+    "review": "Review",
+    "author": "Author"
   }
 }

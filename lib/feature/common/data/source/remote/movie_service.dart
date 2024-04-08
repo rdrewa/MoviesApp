@@ -20,7 +20,7 @@ abstract class MovieService {
   @GET('movie/top_rated')
   Future<MovieResponse> getTopRatedList();
 
-  @GET('movie/{id}?append_to_response=credits,reviews,similar')
+  @GET('movie/{id}?append_to_response=credits,reviews,similar,recommendations')
   Future<MovieDetails> getMovieDetails(@Path() int id);
 
   @GET('movie/now_playing')

@@ -18,6 +18,7 @@ class RateStar extends StatelessWidget {
         horizontal: withBackground ? 10 : 0,
         vertical: withBackground ? 2 : 0),
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.star, color: context.colorScheme.tertiary),
             const SizedBox(width: 4),

@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:movies_app/feature/details/data/model/review_response.dart';
 
 import '../../../common/data/model/movie_response.dart';
 import '../../../common/domain/model/movie.dart';
 import '../../../common/util/movie_util.dart';
+import '../../data/model/review_response.dart';
 import 'cast.dart';
 import 'credits.dart';
 import 'genre.dart';
@@ -41,13 +41,14 @@ class MovieDetails extends Equatable {
   final double voteAverage;
   @JsonKey(name: 'vote_count')
   final int voteCount;
-
   final List<Genre> genres;
   final Credits credits;
   @JsonKey(name: 'reviews')
   final ReviewResponse reviewsData;
   @JsonKey(name: 'similar')
   final MovieResponse similarData;
+  @JsonKey(name: 'recommendations')
+  final MovieResponse recommendationsData;
 
   const MovieDetails(
       {required this.adult,
@@ -67,7 +68,8 @@ class MovieDetails extends Equatable {
       required this.genres,
       required this.credits,
       required this.reviewsData,
-      required this.similarData});
+      required this.similarData,
+      required this.recommendationsData});
 
   factory MovieDetails.fromJson(Map<String, dynamic> data) =>
       _$MovieDetailsFromJson(data);
@@ -93,12 +95,29 @@ class MovieDetails extends Equatable {
         genres,
         credits,
         reviewsData,
-        similarData
+        similarData,
+        recommendations
       ];
 
   List<Cast> get cast => credits.cast;
 
   List<Review> get reviews => reviewsData.results;
 
-  List<Movie> get similar => similarData.results;
+  List<Movie> get similar =>
+      similarData.results.where((movie) => movie.posterPath != null).toList();
+
+  List<Movie> get recommendations => recommendationsData.results
+      .where((movie) => movie.posterPath != null)
+      .toList();
+
+  List<Cast> get actors =>
+      credits.cast.where((actor) => actor.profilePath != null).toList();
+
+  List<String> get allGenres => genres.map((genre) => genre.name).toList();
+
+  bool get hasReview => reviewsData.results.isNotEmpty;
+
+  String get review => reviewsData.results.first.content;
+
+  String get author => reviewsData.results.first.author;
 }

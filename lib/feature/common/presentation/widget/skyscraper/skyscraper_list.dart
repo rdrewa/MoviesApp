@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../app/app_routes.dart';
-import '../../../../common/domain/model/movie.dart';
+import '../../../domain/model/skyscraper_data.dart';
 import '../headline_text.dart';
 import 'skyscraper_item.dart';
 
 class SkyscraperList extends StatelessWidget {
   final String title;
-  final List<Movie> list;
+  final List<SkyscraperData> list;
+  final double height;
 
-  const SkyscraperList({super.key, required this.title, required this.list});
+  const SkyscraperList(
+      {super.key, required this.title, required this.list, this.height = 250});
 
   @override
   Widget build(BuildContext context) {
+    if (list.isEmpty) return const SizedBox.shrink();
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
@@ -27,7 +31,7 @@ class SkyscraperList extends StatelessWidget {
             height: 10,
           ),
           SizedBox(
-            height: 250,
+            height: height,
             child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
@@ -38,7 +42,7 @@ class SkyscraperList extends StatelessWidget {
                         width: 120,
                         onTap: () => context.goNamed(AppRoutes.details,
                                 pathParameters: {
-                                  'id': list[index].id.toString()
+                                  'id': list[index].identifier.toString()
                                 }))),
           )
         ],

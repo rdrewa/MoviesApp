@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../core/extension/build_context_theme_extension.dart';
 import '../../../../core/extension/string_image_extension.dart';
 import '../../domain/model/movie_now.dart';
-import '../../domain/model/picture.dart';
-import 'pictures_grid.dart';
+import 'carousel_image.dart';
+import 'carousel_pictures.dart';
 
 class CarouselItem extends StatelessWidget {
   final MovieNow item;
@@ -18,12 +16,6 @@ class CarouselItem extends StatelessWidget {
       required this.item,
       required this.height,
       required this.onTap});
-
-  String _backdropProvider(Picture picture) => picture.filePath.imageW1280;
-
-  String _posterProvider(Picture picture) => picture.filePath.imageW500;
-
-  String _logoProvider(Picture picture) => picture.filePath.imageW300;
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -38,65 +30,14 @@ class CarouselItem extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: onTap,
-                  child: Container(
-                    width: double.maxFinite,
-                    height: 180.0,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: CachedNetworkImageProvider(
-                              item.backdropPath!.imageW500)),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(20.0)),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(item.title, style: context.headlineMedium)
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                DefaultTabController(
-                    length: 3,
-                    child: SizedBox(
-                      height: 390,
-                      child: Column(
-                        children: [
-                          TabBar(tabs: [
-                            Tab(text: 'now.pictures.backdrops'.tr()),
-                            Tab(text: 'now.pictures.posters'.tr()),
-                            Tab(text: 'now.pictures.logos'.tr())
-                          ]),
-                          Expanded(
-                            child: TabBarView(
-                                physics: const NeverScrollableScrollPhysics(),
-                                children: [
-                                  PicturesGrid(
-                                      count: 3,
-                                      list: item.pictures.backdrops,
-                                      ratio: 1.778,
-                                      provider: _backdropProvider),
-                                  PicturesGrid(
-                                      count: 4,
-                                      list: item.pictures.posters,
-                                      ratio: 0.667,
-                                      provider: _posterProvider),
-                                  PicturesGrid(
-                                      count: 3,
-                                      list: item.pictures.logos,
-                                      ratio: 3.409,
-                                      provider: _logoProvider)
-                                ]),
-                          )
-                        ],
-                      ),
-                    )),
+                CarouselImage(
+                    imageUrl: item.backdropPath!.imageW500,
+                    title: item.title,
+                    onTap: onTap),
+                CarouselPictures(
+                    backdrops: item.pictures.backdrops,
+                    posters: item.pictures.posters,
+                    logos: item.pictures.logos)
               ],
             ),
           ),
