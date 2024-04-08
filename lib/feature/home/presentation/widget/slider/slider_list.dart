@@ -30,8 +30,8 @@ class SliderList extends StatelessWidget {
                       pathParameters: {'id': list[index].id.toString()})),
               options: CarouselOptions(viewportFraction: 1, height: height)),
           Padding(
-            padding: const EdgeInsets.only(left: 10, top: 20),
-            child: HeadlineText(text: title),
+            padding: const EdgeInsets.only(left: 6, top: 20),
+            child: HeadlineText(text: title, withBackground: true),
           ),
         ],
       );
