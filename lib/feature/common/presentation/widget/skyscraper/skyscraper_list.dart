@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movies_app/feature/common/domain/model/skyscraper_data.dart';
 
 import '../../../../../app/app_routes.dart';
+import '../../../domain/model/skyscraper_data.dart';
 import '../headline_text.dart';
 import 'skyscraper_item.dart';
 
