@@ -114,4 +114,10 @@ class MovieDetails extends Equatable {
       credits.cast.where((actor) => actor.profilePath != null).toList();
 
   List<String> get allGenres => genres.map((genre) => genre.name).toList();
+
+  bool get hasReview => reviewsData.results.isNotEmpty;
+
+  String get review => reviewsData.results.first.content;
+
+  String get author => reviewsData.results.first.author;
 }
