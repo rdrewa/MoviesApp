@@ -16,6 +16,8 @@ class SkyscraperList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (list.isEmpty) return const SizedBox.shrink();
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
