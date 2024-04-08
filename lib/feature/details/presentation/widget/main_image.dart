@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import '/core/extension/build_context_theme_extension.dart';
 import '/core/extension/string_image_extension.dart';
 
-class MainData extends StatelessWidget {
+class MainImage extends StatelessWidget {
   final String? imageUrl;
   final String title;
 
-  const MainData({super.key, required this.imageUrl, required this.title});
+  const MainImage({super.key, required this.imageUrl, required this.title});
 
   @override
   Widget build(BuildContext context) => Container(
