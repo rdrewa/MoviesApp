@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../common/domain/model/skyscraper_data.dart';
 import '../../../details/domain/model/movie_details.dart';
 import '../../util/movie_util.dart';
 
@@ -9,7 +10,7 @@ part 'movie.g.dart';
 
 @HiveType(typeId: 0)
 @JsonSerializable()
-class Movie extends Equatable {
+class Movie extends Equatable implements SkyscraperData {
   @HiveField(1)
   final bool adult;
   @JsonKey(name: 'backdrop_path')
@@ -110,4 +111,39 @@ class Movie extends Equatable {
   bool? get stringify => true;
 
   int get key => id;
+
+  @JsonKey(includeFromJson: false)
+  @override
+  int get identifier => id;
+
+  @JsonKey(includeFromJson: false)
+  @override
+  bool get hasVote => true;
+
+  @JsonKey(includeFromJson: false)
+  @override
+  String? get imageUrl => posterPath;
+
+  @JsonKey(includeFromJson: false)
+  @override
+  String get label => title;
+
+  @JsonKey(includeFromJson: false)
+  @override
+  double get vote => voteAverage;
+
+  @override
+  set identifier(int _) {}
+
+  @override
+  set hasVote(bool _) {}
+
+  @override
+  set imageUrl(String? _) {}
+
+  @override
+  set label(String _) {}
+
+  @override
+  set vote(double _) {}
 }
