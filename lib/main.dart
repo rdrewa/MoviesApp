@@ -17,6 +17,7 @@ void main() async {
       supportedLocales: LanguageUtil.supportedLocales,
       path: 'assets/i18n',
       fallbackLocale: LanguageUtil.locale,
+      startLocale: LanguageUtil.locale,
       useOnlyLangCode: true,
       child: const MovieApp()));
 }
