@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../common/presentation/widget/top_bar.dart';
 import '../../../../app/di.dart';
 import '../../../common/presentation/widget/progress_wheel.dart';
 import '../bloc/list/watch_list_bloc.dart';
@@ -13,7 +15,7 @@ class WatchScreen extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider(
       create: (context) => sl<WatchListBloc>()..add(GetWatchListEvent()),
       child: Scaffold(
-          appBar: AppBar(),
+          appBar: TopBar(title: 'watch.title'.tr()),
           body: BlocBuilder<WatchListBloc, WatchListState>(
               builder: (context, state) => switch (state) {
                     WatchListInitial() => const SizedBox.shrink(),

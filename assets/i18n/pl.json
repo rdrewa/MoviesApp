@@ -2,13 +2,8 @@
   "app": {
     "title": "Movies App"
   },
-  "navigation" :  {
-    "home": "home",
-    "now": "now",
-    "watch": "watch"
-  },
   "home": {
-    "title": "Movie BLoC App: Home",
+    "title": "Filmy",
     "trending": {
       "title": "Trending",
       "empty": "Empty Trending list"
@@ -23,10 +18,17 @@
     }
   },
   "now": {
+    "title": "Teraz na Ekranie!",
     "pictures": {
       "backdrops": "Backdrops",
       "posters": "Posters",
       "logos": "Logos"
     }
+  },
+  "watch": {
+    "title": "Do obejrzenia"
+  },
+  "details": {
+    "title": "Szczegóły"
   }
 }

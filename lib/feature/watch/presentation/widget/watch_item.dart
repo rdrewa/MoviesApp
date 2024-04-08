@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '/core/extension/build_context_theme_extension.dart';
 import '../../../../core/extension/string_image_extension.dart';
 import '../../../common/presentation/widget/rate_star.dart';
 import '../../../common/presentation/widget/release_date_text.dart';
@@ -21,7 +22,7 @@ class WatchItem extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 4),
         padding: const EdgeInsets.only(right: 12),
         decoration: BoxDecoration(
-            color: Colors.orange, borderRadius: BorderRadius.circular(20)),
+            color: context.colorScheme.secondaryContainer, borderRadius: BorderRadius.circular(20)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

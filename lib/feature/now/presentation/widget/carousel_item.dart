@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import '../../../../core/extension/build_context_theme_extension.dart';
 import '../../../../core/extension/string_image_extension.dart';
 import '../../domain/model/movie_now.dart';
 import '../../domain/model/picture.dart';
@@ -12,7 +13,11 @@ class CarouselItem extends StatelessWidget {
   final double height;
   final Function() onTap;
 
-  const CarouselItem({super.key, required this.item, required this.height, required this.onTap});
+  const CarouselItem(
+      {super.key,
+      required this.item,
+      required this.height,
+      required this.onTap});
 
   String _backdropProvider(Picture picture) => picture.filePath.imageW1280;
 
@@ -22,11 +27,11 @@ class CarouselItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.only(top: 5),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.grey,
+            color: context.colorScheme.tertiaryContainer,
           ),
           height: height,
           child: SingleChildScrollView(
@@ -43,20 +48,15 @@ class CarouselItem extends StatelessWidget {
                           fit: BoxFit.cover,
                           image: CachedNetworkImageProvider(
                               item.backdropPath!.imageW500)),
-                      borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0)),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10, top: 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            item.title,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium
-                                ?.copyWith(color: Colors.white),
-                          )
+                          Text(item.title, style: context.headlineMedium)
                         ],
                       ),
                     ),
@@ -68,23 +68,11 @@ class CarouselItem extends StatelessWidget {
                       height: 390,
                       child: Column(
                         children: [
-                          TabBar(
-                              indicatorColor: Colors.white,
-                              labelStyle: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium
-                                  ?.copyWith(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                              unselectedLabelStyle: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium
-                                  ?.copyWith(color: Colors.white70),
-                              tabs: [
-                                Tab(text: 'now.pictures.backdrops'.tr()),
-                                Tab(text: 'now.pictures.posters'.tr()),
-                                Tab(text: 'now.pictures.logos'.tr())
-                              ]),
+                          TabBar(tabs: [
+                            Tab(text: 'now.pictures.backdrops'.tr()),
+                            Tab(text: 'now.pictures.posters'.tr()),
+                            Tab(text: 'now.pictures.logos'.tr())
+                          ]),
                           Expanded(
                             child: TabBarView(
                                 physics: const NeverScrollableScrollPhysics(),

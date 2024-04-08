@@ -38,8 +38,8 @@ class SliderItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ReleaseDateText(releaseDate: item.releaseDate!),
-                    RateStar(voteAverage: item.voteAverage)
+                    ReleaseDateText(releaseDate: item.releaseDate!, withBackground: true),
+                    RateStar(voteAverage: item.voteAverage, withBackground: true)
                   ],
                 )
               ],
