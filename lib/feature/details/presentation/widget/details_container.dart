@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-import '../../../home/presentation/widget/headline_text.dart';
-import '../../../home/presentation/widget/skyscraper/skyscraper_list.dart';
+import '../../../common/presentation/widget/headline_text.dart';
+import '../../../common/presentation/widget/skyscraper/skyscraper_list.dart';
 import '../../domain/model/movie_details.dart';
 import 'body_text.dart';
 import 'main_image.dart';
