@@ -2,13 +2,8 @@
   "app": {
     "title": "Movies App"
   },
-  "navigation" :  {
-    "home": "home",
-    "now": "now",
-    "watch": "watch"
-  },
   "home": {
-    "title": "Movie BLoC App: Home",
+    "title": "Movies",
     "trending": {
       "title": "Trending",
       "empty": "Empty Trending list"
@@ -23,10 +18,17 @@
     }
   },
   "now": {
+    "title": "Now on Screen!",
     "pictures": {
       "backdrops": "Backdrops",
       "posters": "Posters",
       "logos": "Logos"
     }
+  },
+  "watch": {
+    "title": "Watchlist"
+  },
+  "details": {
+    "title": "Details"
   }
 }
