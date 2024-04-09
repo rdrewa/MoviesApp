@@ -6,19 +6,20 @@
     "title": "Filmy",
     "trending": {
       "title": "Trending",
-      "empty": "Empty Trending list"
+      "empty": "Pusta lista Trending"
     },
     "popular": {
       "title": "Popular",
-      "empty": "Empty Popular list"
+      "empty": "Pusta lista Popularnych"
     },
     "toprated": {
       "title": "Top Rated",
-      "empty": "Empty Top Rated list"
+      "empty": "Pusta lista Top Rated"
     }
   },
   "now": {
     "title": "Teraz na Ekranie!",
+    "empty": "Pusta lista Teraz",
     "pictures": {
       "backdrops": "Backdrops",
       "posters": "Posters",
@@ -26,7 +27,8 @@
     }
   },
   "watch": {
-    "title": "Do obejrzenia"
+    "title": "Do obejrzenia",
+    "empty": "Pusta lista Do obejrzenia"
   },
   "details": {
     "title": "Szczegóły",
