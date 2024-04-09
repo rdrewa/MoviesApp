@@ -7,16 +7,14 @@ import '../../../../util/data.dart';
 import '../../../../util/fixture.dart';
 
 void main() {
-  test(
-      'Should return a valid model Genre from JSON',
-          () async {
-        // arrange
-        final Map<String, dynamic> jsonMap = json.decode(fixture('genre'));
+  test('Should return a valid model Genre from JSON', () async {
+    // arrange
+    final Map<String, dynamic> jsonMap = json.decode(fixture('genre'));
 
-        // act
-        final result = Genre.fromJson(jsonMap);
+    // act
+    final result = Genre.fromJson(jsonMap);
 
-        // assert
-        expect(result, equals(testGenre1));
-      });
+    // assert
+    expect(result, equals(testGenre1));
+  });
 }

@@ -44,5 +44,6 @@ void main() {
       setUp: () => when(() => mockGetPopularUsecase())
           .thenAnswer((_) async => const Left(ServerFailure('Server failure'))),
       act: (bloc) => bloc.add(GetPopularEvent()),
-      expect: () => [PopularLoading(), const PopularFailure('Something went wrong')]);
+      expect: () =>
+          [PopularLoading(), const PopularFailure('Something went wrong')]);
 }

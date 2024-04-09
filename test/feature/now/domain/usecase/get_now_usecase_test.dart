@@ -29,6 +29,5 @@ void main() {
     // assert
     result.fold((left) => fail('test failed'),
         (right) => expect(right, [testMovieNow]));
-
   });
 }

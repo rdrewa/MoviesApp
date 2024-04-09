@@ -27,5 +27,8 @@ void main() {
       setUp: () => when(() => mockGetNowUsecase())
           .thenAnswer((_) async => Right([testMovieNow])),
       act: (bloc) => bloc.add(GetNowEvent()),
-      expect: () => [NowLoading(), NowLoaded([testMovieNow])]);
+      expect: () => [
+            NowLoading(),
+            NowLoaded([testMovieNow])
+          ]);
 }

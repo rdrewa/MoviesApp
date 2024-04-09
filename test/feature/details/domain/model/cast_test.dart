@@ -7,16 +7,14 @@ import '../../../../util/data.dart';
 import '../../../../util/fixture.dart';
 
 void main() {
-  test(
-      'Should return a valid model Cast from JSON',
-          () async {
-        // arrange
-        final Map<String, dynamic> jsonMap = json.decode(fixture('cast'));
+  test('Should return a valid model Cast from JSON', () async {
+    // arrange
+    final Map<String, dynamic> jsonMap = json.decode(fixture('cast'));
 
-        // act
-        final result = Cast.fromJson(jsonMap);
+    // act
+    final result = Cast.fromJson(jsonMap);
 
-        // assert
-        expect(result, equals(testCast1));
-      });
+    // assert
+    expect(result, equals(testCast1));
+  });
 }

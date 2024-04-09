@@ -18,7 +18,8 @@ void main() {
 
   test('Should get Watch movie list from repository', () async {
     // arrange
-    when(() => mockWatchRepository.getList()).thenAnswer((invocation) async => Right(testMovies));
+    when(() => mockWatchRepository.getList())
+        .thenAnswer((invocation) async => Right(testMovies));
 
     // act
     final result = await getWatchListUsecase();
