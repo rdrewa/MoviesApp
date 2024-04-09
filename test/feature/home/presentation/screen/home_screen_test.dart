@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:movies_app/feature/common/presentation/widget/empty_box.dart';
 import 'package:movies_app/feature/common/presentation/widget/error_box.dart';
+import 'package:movies_app/feature/common/presentation/widget/progress_wheel.dart';
 import 'package:movies_app/feature/common/presentation/widget/skyscraper/skyscraper_list.dart';
 import 'package:movies_app/feature/home/presentation/bloc/popular/popular_bloc.dart';
 import 'package:movies_app/feature/home/presentation/bloc/toprated/top_rated_bloc.dart';
@@ -43,7 +43,7 @@ void main() {
     await widgetTester.pumpWidget(const TesterApp(tested: HomeScreen()));
 
     // assert
-    expect(find.byType(CircularProgressIndicator), findsNothing);
+    expect(find.byType(ProgressWheel), findsNothing);
   });
 
   testWidgets('Should show 3 progress indicators when states are loading',
@@ -57,7 +57,7 @@ void main() {
     await widgetTester.pumpWidget(const TesterApp(tested: HomeScreen()));
 
     // assert
-    expect(find.byType(CircularProgressIndicator), findsNWidgets(3));
+    expect(find.byType(ProgressWheel), findsNWidgets(3));
   });
 
   testWidgets('Should show 3 error boxes when states are failure',

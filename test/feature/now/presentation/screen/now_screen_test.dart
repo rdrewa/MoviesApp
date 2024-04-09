@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mocktail/mocktail.dart';
@@ -35,7 +34,7 @@ void main() {
 
     // assert
     expect(find.byType(NowScreen), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsNothing);
+    expect(find.byType(ProgressWheel), findsNothing);
   });
 
   testWidgets('Should show progress indicator when state is loading',
@@ -48,7 +47,6 @@ void main() {
 
     // assert
     expect(find.byType(NowScreen), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
     expect(find.byType(ProgressWheel), findsOneWidget);
   });
 
