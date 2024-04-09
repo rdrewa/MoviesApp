@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/domain/model/movie.dart';
+import '../../../common/presentation/widget/error_box.dart';
 import '../../../common/presentation/widget/top_bar.dart';
 import '../../../common/presentation/widget/progress_wheel.dart';
 import '../../../../app/di.dart';
@@ -27,7 +28,7 @@ class DetailsScreen extends StatelessWidget {
                         WatchIcon(item: Movie.fromDetails(state.data))
                       ]),
                       body: DetailsContainer(details: state.data)),
-                  DetailsFailure() => Text(state.message),
+                  DetailsFailure() => ErrorBox(message: state.message),
                 }),
       );
 }

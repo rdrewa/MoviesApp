@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../common/presentation/widget/empty_box.dart';
+import '../../../common/presentation/widget/error_box.dart';
 import '../../../common/presentation/widget/top_bar.dart';
 import '../../../../app/di.dart';
 import '../../../common/presentation/widget/progress_wheel.dart';
@@ -19,10 +21,10 @@ class NowScreen extends StatelessWidget {
           body: BlocBuilder<NowBloc, NowState>(
             builder: (BuildContext context, NowState state) => switch (state) {
               NowInitial() => const SizedBox.shrink(),
-              NowEmpty() => const Text('Empty Trending Movies list'),
+              NowEmpty() => EmptyBox(message: 'now.empty'.tr()),
               NowLoading() => const ProgressWheel(),
               NowLoaded() => CarouselList(list: state.data),
-              NowFailure() => Text(state.message),
+              NowFailure() => ErrorBox(message: state.message),
             },
           ),
         ),
