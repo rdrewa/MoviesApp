@@ -1,3 +1,4 @@
+import 'package:bloc_test/bloc_test.dart';
 import 'package:dio/dio.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -12,6 +13,9 @@ import 'package:movies_app/feature/details/domain/usecase/remove_from_watch_usec
 import 'package:movies_app/feature/home/domain/usecase/get_popular_usecase.dart';
 import 'package:movies_app/feature/home/domain/usecase/get_top_rated_usecase.dart';
 import 'package:movies_app/feature/home/domain/usecase/get_trending_usecase.dart';
+import 'package:movies_app/feature/home/presentation/bloc/popular/popular_bloc.dart';
+import 'package:movies_app/feature/home/presentation/bloc/toprated/top_rated_bloc.dart';
+import 'package:movies_app/feature/home/presentation/bloc/trending/trending_bloc.dart';
 import 'package:movies_app/feature/now/domain/usecase/get_now_usecase.dart';
 import 'package:movies_app/feature/watch/domain/usecase/get_watch_list_usecase.dart';
 
@@ -35,10 +39,20 @@ class MockWatchRepository extends Mock implements WatchRepository {}
 
 class MockAddToWatchUsecase extends Mock implements AddToWatchUsecase {}
 
-class MockRemoveFromWatchUsecase extends Mock implements RemoveFromWatchUsecase {}
+class MockRemoveFromWatchUsecase extends Mock
+    implements RemoveFromWatchUsecase {}
 
 class MockIsOnWatchUsecase extends Mock implements IsOnWatchUsecase {}
 
 class MockGetWatchListUsecase extends Mock implements GetWatchListUsecase {}
 
 class MockGetNowUsecase extends Mock implements GetNowUsecase {}
+
+class MockTrendingBloc extends MockBloc<TrendingEvent, TrendingState>
+    implements TrendingBloc {}
+
+class MockPopularBloc extends MockBloc<PopularEvent, PopularState>
+    implements PopularBloc {}
+
+class MockTopRatedBloc extends MockBloc<TopRatedEvent, TopRatedState>
+    implements TopRatedBloc {}
