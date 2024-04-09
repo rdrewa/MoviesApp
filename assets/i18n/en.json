@@ -19,6 +19,7 @@
   },
   "now": {
     "title": "Now on Screen!",
+    "empty": "Empty Now list",
     "pictures": {
       "backdrops": "Backdrops",
       "posters": "Posters",
@@ -26,7 +27,8 @@
     }
   },
   "watch": {
-    "title": "Watchlist"
+    "title": "Watchlist",
+    "empty": "Empty Watch list"
   },
   "details": {
     "title": "Details",
