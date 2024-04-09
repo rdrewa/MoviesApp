@@ -51,43 +51,45 @@ void main() {
   });
 
   testWidgets('Should show empty box when state is empty',
-          (widgetTester) async {
-        // arrange
-        when(() => mockNowBloc.state).thenReturn(NowEmpty());
+      (widgetTester) async {
+    // arrange
+    when(() => mockNowBloc.state).thenReturn(NowEmpty());
 
-        // act
-        await widgetTester.pumpWidget(const TesterApp(tested: NowScreen()));
+    // act
+    await widgetTester.pumpWidget(const TesterApp(tested: NowScreen()));
 
-        // assert
-        expect(find.byType(NowScreen), findsOneWidget);
-        expect(find.byType(EmptyBox), findsOneWidget);
-      });
+    // assert
+    expect(find.byType(NowScreen), findsOneWidget);
+    expect(find.byType(EmptyBox), findsOneWidget);
+  });
 
-  testWidgets('Should show carousel list and pictures grid when state is loaded',
-          (widgetTester) async {
-        // arrange
-        when(() => mockNowBloc.state).thenReturn(NowLoaded([testMovieNow, testMovieNow, testMovieNow, testMovieNow]));
+  testWidgets(
+      'Should show carousel list and pictures grid when state is loaded',
+      (widgetTester) async {
+    // arrange
+    when(() => mockNowBloc.state).thenReturn(
+        NowLoaded([testMovieNow, testMovieNow, testMovieNow, testMovieNow]));
 
-        // act
-        await widgetTester.pumpWidget(const TesterApp(tested: NowScreen()));
+    // act
+    await widgetTester.pumpWidget(const TesterApp(tested: NowScreen()));
 
-        // assert
-        expect(find.byType(NowScreen), findsOneWidget);
-        expect(find.byType(ProgressWheel), findsNothing);
-        expect(find.byType(CarouselImage), findsNWidgets(3));
-        expect(find.byType(CarouselPictures), findsNWidgets(3));
-      });
+    // assert
+    expect(find.byType(NowScreen), findsOneWidget);
+    expect(find.byType(ProgressWheel), findsNothing);
+    expect(find.byType(CarouselImage), findsNWidgets(1 + 2));
+    expect(find.byType(CarouselPictures), findsNWidgets(1 + 2));
+  });
 
   testWidgets('Should show error box when state is failure',
-          (widgetTester) async {
-        // arrange
-        when(() => mockNowBloc.state).thenReturn(const NowFailure('error'));
+      (widgetTester) async {
+    // arrange
+    when(() => mockNowBloc.state).thenReturn(const NowFailure('error'));
 
-        // act
-        await widgetTester.pumpWidget(const TesterApp(tested: NowScreen()));
+    // act
+    await widgetTester.pumpWidget(const TesterApp(tested: NowScreen()));
 
-        // assert
-        expect(find.byType(NowScreen), findsOneWidget);
-        expect(find.byType(ErrorBox), findsOneWidget);
-      });
+    // assert
+    expect(find.byType(NowScreen), findsOneWidget);
+    expect(find.byType(ErrorBox), findsOneWidget);
+  });
 }
