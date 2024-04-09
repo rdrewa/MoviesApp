@@ -17,6 +17,7 @@ import 'package:movies_app/feature/home/presentation/bloc/popular/popular_bloc.d
 import 'package:movies_app/feature/home/presentation/bloc/toprated/top_rated_bloc.dart';
 import 'package:movies_app/feature/home/presentation/bloc/trending/trending_bloc.dart';
 import 'package:movies_app/feature/now/domain/usecase/get_now_usecase.dart';
+import 'package:movies_app/feature/now/presentation/bloc/now/now_bloc.dart';
 import 'package:movies_app/feature/watch/domain/usecase/get_watch_list_usecase.dart';
 
 class MockMovieRepository extends Mock implements MovieRepository {}
@@ -56,3 +57,5 @@ class MockPopularBloc extends MockBloc<PopularEvent, PopularState>
 
 class MockTopRatedBloc extends MockBloc<TopRatedEvent, TopRatedState>
     implements TopRatedBloc {}
+
+class MockNowBloc extends MockBloc<NowEvent, NowState> implements NowBloc {}
