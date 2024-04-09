@@ -1,0 +1,76 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:get_it/get_it.dart';
+import 'package:mocktail/mocktail.dart';
+
+import 'package:movies_app/feature/common/presentation/widget/skyscraper/skyscraper_list.dart';
+import 'package:movies_app/feature/home/presentation/bloc/popular/popular_bloc.dart';
+import 'package:movies_app/feature/home/presentation/bloc/toprated/top_rated_bloc.dart';
+import 'package:movies_app/feature/home/presentation/bloc/trending/trending_bloc.dart';
+import 'package:movies_app/feature/home/presentation/screen/home_screen.dart';
+import 'package:movies_app/feature/home/presentation/widget/slider/slider_list.dart';
+
+import '../../../../util/data.dart';
+import '../../../../util/mocks.dart';
+import '../../../../util/tester_app.dart';
+
+void main() {
+  late MockTrendingBloc mockTrendingBloc;
+  late MockPopularBloc mockPopularBloc;
+  late MockTopRatedBloc mockTopRatedBloc;
+
+
+  setUp(() async {
+    mockTrendingBloc = MockTrendingBloc();
+    mockPopularBloc = MockPopularBloc();
+    mockTopRatedBloc = MockTopRatedBloc();
+  });
+
+  final GetIt sl = GetIt.instance;
+  sl.registerFactory<TrendingBloc>(() => mockTrendingBloc);
+  sl.registerFactory<PopularBloc>(() => mockPopularBloc);
+  sl.registerFactory<TopRatedBloc>(() => mockTopRatedBloc);
+
+  testWidgets('Should not show any progress indicator when states are initial',
+      (widgetTester) async {
+    // arrange
+    when(() => mockTrendingBloc.state).thenReturn(TrendingInitial());
+    when(() => mockPopularBloc.state).thenReturn(PopularInitial());
+    when(() => mockTopRatedBloc.state).thenReturn(TopRatedInitial());
+
+    // act
+    await widgetTester.pumpWidget(const TesterApp(tested: HomeScreen()));
+
+    // assert
+    expect(find.byType(CircularProgressIndicator), findsNothing);
+  });
+
+  testWidgets('Should show 3 progress indicators when states are loading',
+      (widgetTester) async {
+    // arrange
+    when(() => mockTrendingBloc.state).thenReturn(TrendingLoading());
+    when(() => mockPopularBloc.state).thenReturn(PopularLoading());
+    when(() => mockTopRatedBloc.state).thenReturn(TopRatedLoading());
+
+    // act
+    await widgetTester.pumpWidget(const TesterApp(tested: HomeScreen()));
+
+    // assert
+    expect(find.byType(CircularProgressIndicator), findsNWidgets(3));
+  });
+
+  testWidgets('Should show 3 list of movies when states are loading',
+      (widgetTester) async {
+    // arrange
+    when(() => mockTrendingBloc.state).thenReturn(TrendingLoaded(testMovies));
+    when(() => mockPopularBloc.state).thenReturn(PopularLoaded(testMovies));
+    when(() => mockTopRatedBloc.state).thenReturn(TopRatedLoaded(testMovies));
+
+    // act
+    await widgetTester.pumpWidget(const TesterApp(tested: HomeScreen()));
+
+    // assert
+    expect(find.byType(SliderList), findsOneWidget);
+    expect(find.byType(SkyscraperList), findsNWidgets(2));
+  });
+}
