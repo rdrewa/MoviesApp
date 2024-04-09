@@ -76,15 +76,16 @@ void main() {
   });
 
   testWidgets('Should show error box when state is failure',
-          (widgetTester) async {
-        // arrange
-        when(() => mockWatchListBloc.state).thenReturn(const WatchListFailure('error'));
+      (widgetTester) async {
+    // arrange
+    when(() => mockWatchListBloc.state)
+        .thenReturn(const WatchListFailure('error'));
 
-        // act
-        await widgetTester.pumpWidget(const TesterApp(tested: WatchScreen()));
+    // act
+    await widgetTester.pumpWidget(const TesterApp(tested: WatchScreen()));
 
-        // assert
-        expect(find.byType(WatchScreen), findsOneWidget);
-        expect(find.byType(ErrorBox), findsOneWidget);
-      });
+    // assert
+    expect(find.byType(WatchScreen), findsOneWidget);
+    expect(find.byType(ErrorBox), findsOneWidget);
+  });
 }

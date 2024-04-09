@@ -111,7 +111,8 @@ void main() {
     // arrange
     when(() => mockTrendingBloc.state).thenReturn(TrendingLoaded(testMovies));
     when(() => mockPopularBloc.state).thenReturn(PopularEmpty());
-    when(() => mockTopRatedBloc.state).thenReturn(const TopRatedFailure('error'));
+    when(() => mockTopRatedBloc.state)
+        .thenReturn(const TopRatedFailure('error'));
 
     // act
     await widgetTester.pumpWidget(const TesterApp(tested: HomeScreen()));
