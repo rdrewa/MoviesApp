@@ -19,6 +19,7 @@ import 'package:movies_app/feature/home/presentation/bloc/trending/trending_bloc
 import 'package:movies_app/feature/now/domain/usecase/get_now_usecase.dart';
 import 'package:movies_app/feature/now/presentation/bloc/now/now_bloc.dart';
 import 'package:movies_app/feature/watch/domain/usecase/get_watch_list_usecase.dart';
+import 'package:movies_app/feature/watch/presentation/bloc/list/watch_list_bloc.dart';
 
 class MockMovieRepository extends Mock implements MovieRepository {}
 
@@ -59,3 +60,5 @@ class MockTopRatedBloc extends MockBloc<TopRatedEvent, TopRatedState>
     implements TopRatedBloc {}
 
 class MockNowBloc extends MockBloc<NowEvent, NowState> implements NowBloc {}
+
+class MockWatchListBloc extends MockBloc<WatchListEvent, WatchListState> implements WatchListBloc {}
