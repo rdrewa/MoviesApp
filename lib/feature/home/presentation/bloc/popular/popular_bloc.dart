@@ -6,6 +6,7 @@ import '../../../../common/domain/model/movie.dart';
 import '../../../domain/usecase/get_popular_usecase.dart';
 
 part 'popular_event.dart';
+
 part 'popular_state.dart';
 
 class PopularBloc extends Bloc<PopularEvent, PopularState> {

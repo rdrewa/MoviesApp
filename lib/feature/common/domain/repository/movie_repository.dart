@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 
-
 import '../../../../core/error/failure.dart';
 import '../../../details/domain/model/movie_details.dart';
 import '../../../now/domain/model/movie_now.dart';

@@ -27,4 +27,3 @@ final class TrendingFailure extends TrendingState {
 
   const TrendingFailure(this.message);
 }
-

@@ -7,7 +7,7 @@ import 'pictures.dart';
 part 'movie_now.g.dart';
 
 @JsonSerializable()
-class MovieNow extends Equatable{
+class MovieNow extends Equatable {
   final bool adult;
   @JsonKey(name: 'backdrop_path')
   final String? backdropPath;
@@ -52,25 +52,26 @@ class MovieNow extends Equatable{
       required this.voteCount,
       required this.pictures});
 
-  factory MovieNow.fromJson(Map<String, dynamic> data) => _$MovieNowFromJson(data);
+  factory MovieNow.fromJson(Map<String, dynamic> data) =>
+      _$MovieNowFromJson(data);
 
   Map<String, dynamic> toJson() => _$MovieNowToJson(this);
 
   @override
   List<Object?> get props => [
-    id,
-    adult,
-    backdropPath,
-    originalLanguage,
-    originalTitle,
-    overview,
-    popularity,
-    posterPath,
-    releaseDate,
-    title,
-    video,
-    voteAverage,
-    voteCount,
-    pictures
-  ];
+        id,
+        adult,
+        backdropPath,
+        originalLanguage,
+        originalTitle,
+        overview,
+        popularity,
+        posterPath,
+        releaseDate,
+        title,
+        video,
+        voteAverage,
+        voteCount,
+        pictures
+      ];
 }

@@ -17,42 +17,50 @@ class WatchItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-    onTap: onTap,
-    child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 4),
-        padding: const EdgeInsets.only(right: 12),
-        decoration: BoxDecoration(
-            color: context.colorScheme.secondaryContainer, borderRadius: BorderRadius.circular(20)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              height: 180,
-              width: 120,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image:
-                          CachedNetworkImageProvider(item.posterPath!.imageW500),
-                      fit: BoxFit.cover),
-                  borderRadius: BorderRadius.circular(10)),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  WatchTitle(title: item.title),
-                  const SizedBox(height: 8,),
-                  Row(
+        onTap: onTap,
+        child: Container(
+            margin: const EdgeInsets.symmetric(vertical: 4),
+            padding: const EdgeInsets.only(right: 12),
+            decoration: BoxDecoration(
+                color: context.colorScheme.secondaryContainer,
+                borderRadius: BorderRadius.circular(20)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: 180,
+                  width: 120,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                              item.posterPath!.imageW500),
+                          fit: BoxFit.cover),
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [ReleaseDateText(releaseDate: item.releaseDate!), RateStar(voteAverage: item.voteAverage)] ),
-                  const SizedBox(height: 8,),
-                  WatchOverview(overview: item.overview)
-                ],
-              ),
-            )
-          ],
-        )),
-  );
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      WatchTitle(title: item.title),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ReleaseDateText(releaseDate: item.releaseDate!),
+                            RateStar(voteAverage: item.voteAverage)
+                          ]),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      WatchOverview(overview: item.overview)
+                    ],
+                  ),
+                )
+              ],
+            )),
+      );
 }

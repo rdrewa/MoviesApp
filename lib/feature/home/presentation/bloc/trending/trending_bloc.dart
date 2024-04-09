@@ -6,6 +6,7 @@ import '../../../../common/domain/model/movie.dart';
 import '../../../domain/usecase/get_trending_usecase.dart';
 
 part 'trending_event.dart';
+
 part 'trending_state.dart';
 
 class TrendingBloc extends Bloc<TrendingEvent, TrendingState> {

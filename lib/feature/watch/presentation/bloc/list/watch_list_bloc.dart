@@ -6,6 +6,7 @@ import '../../../../common/domain/model/movie.dart';
 import '../../../domain/usecase/get_watch_list_usecase.dart';
 
 part 'watch_list_event.dart';
+
 part 'watch_list_state.dart';
 
 class WatchListBloc extends Bloc<WatchListEvent, WatchListState> {

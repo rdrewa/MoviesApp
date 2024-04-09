@@ -33,15 +33,22 @@ class DetailsContainer extends StatelessWidget {
                         popularity: details.popularity),
                     HeadlineText(text: 'details.description'.tr()),
                     BodyText(body: details.overview),
-                    details.hasReview ? HeadlineText(text: 'details.review'.tr()) : const SizedBox.shrink(),
-                    details.hasReview ? BodyText(body: details.review) : const SizedBox.shrink(),
-                    details.hasReview ? AuthorText(author: details.author): const SizedBox.shrink(),
+                    details.hasReview
+                        ? HeadlineText(text: 'details.review'.tr())
+                        : const SizedBox.shrink(),
+                    details.hasReview
+                        ? BodyText(body: details.review)
+                        : const SizedBox.shrink(),
+                    details.hasReview
+                        ? AuthorText(author: details.author)
+                        : const SizedBox.shrink(),
                   ])),
           SkyscraperList(
               title: 'details.cast'.tr(), list: details.actors, height: 220),
           SkyscraperList(title: 'details.similar'.tr(), list: details.similar),
           SkyscraperList(
-              title: 'details.recommendations'.tr(), list: details.recommendations)
+              title: 'details.recommendations'.tr(),
+              list: details.recommendations),
         ],
       ),
     );

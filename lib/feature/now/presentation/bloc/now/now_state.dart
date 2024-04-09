@@ -2,7 +2,7 @@ part of 'now_bloc.dart';
 
 sealed class NowState extends Equatable {
   const NowState();
-  
+
   @override
   List<Object> get props => [];
 }

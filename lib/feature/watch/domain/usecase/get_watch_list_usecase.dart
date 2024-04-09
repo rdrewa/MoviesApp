@@ -9,5 +9,6 @@ class GetWatchListUsecase {
 
   GetWatchListUsecase(this.watchRepository);
 
-  Future<Either<Failure, List<Movie>>> call() async => watchRepository.getList();
+  Future<Either<Failure, List<Movie>>> call() async =>
+      watchRepository.getList();
 }

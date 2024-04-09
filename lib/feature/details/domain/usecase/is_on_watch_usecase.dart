@@ -9,5 +9,6 @@ class IsOnWatchUsecase {
 
   IsOnWatchUsecase(this.watchRepository);
 
-  Future<Either<Failure, bool>>call(Movie item) => watchRepository.isAdded(item.key);
+  Future<Either<Failure, bool>> call(Movie item) =>
+      watchRepository.isAdded(item.key);
 }

@@ -12,12 +12,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopBar(title: 'home.title'.tr()),
+        appBar: TopBar(title: 'home.title'.tr()),
         body: const SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [TrendingMovies(), PopularMovies(), TopRatedMovies()],
-      ),
-    ));
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [TrendingMovies(), PopularMovies(), TopRatedMovies()],
+          ),
+        ));
   }
 }

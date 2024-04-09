@@ -9,5 +9,6 @@ class RemoveFromWatchUsecase {
 
   RemoveFromWatchUsecase(this.watchRepository);
 
-  Future<Either<Failure, void>>call(Movie item) => watchRepository.removeItem(item);
+  Future<Either<Failure, void>> call(Movie item) =>
+      watchRepository.removeItem(item);
 }
