@@ -8,7 +8,7 @@ A simple app to demonstrate Clean Architecture with REST and [Bloc](https://bloc
 - **Dependencies**: [get_it](https://pub.dev/packages/get_it)
 - **Network**: [retrofit](https://pub.dev/packages/retrofit), [dio](https://pub.dev/packages/dio)
 - **Navigation**: [go_router](https://pub.dev/packages/go_router)
-- **Error handling**: [dartz](https://pub.dev/packages/freezed) [FP](https://medium.com/nerd-for-tech/better-error-handling-with-either-type-in-dart-b91bef20d716)
+- **Error handling**: [dartz](https://pub.dev/packages/dartz), [FP](https://medium.com/nerd-for-tech/better-error-handling-with-either-type-in-dart-b91bef20d716)
 - **Serialization**: [json_serialization](https://pub.dev/packages/json_serialization)
 - **Persistence**: [hive](https://pub.dev/packages/hive), [hive_flutter](https://pub.dev/packages/hive_flutter)
 - **Unions/pattern-matching etc.**: [freezed](https://pub.dev/packages/freezed)
