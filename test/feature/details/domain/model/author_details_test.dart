@@ -7,16 +7,14 @@ import '../../../../util/data.dart';
 import '../../../../util/fixture.dart';
 
 void main() {
-  test(
-      'Should return a valid model AuthorDetails from JSON',
-          () async {
-        // arrange
-        final Map<String, dynamic> jsonMap = json.decode(fixture('author_details'));
+  test('Should return a valid model AuthorDetails from JSON', () async {
+    // arrange
+    final Map<String, dynamic> jsonMap = json.decode(fixture('author_details'));
 
-        // act
-        final result = AuthorDetails.fromJson(jsonMap);
+    // act
+    final result = AuthorDetails.fromJson(jsonMap);
 
-        // assert
-        expect(result, equals(testAuthorDetails1));
-      });
+    // assert
+    expect(result, equals(testAuthorDetails1));
+  });
 }

@@ -6,6 +6,7 @@ import '../../../../common/domain/model/movie.dart';
 import '../../../domain/usecase/get_top_rated_usecase.dart';
 
 part 'top_rated_event.dart';
+
 part 'top_rated_state.dart';
 
 class TopRatedBloc extends Bloc<TopRatedEvent, TopRatedState> {

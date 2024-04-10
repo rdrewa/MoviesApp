@@ -1,6 +1,6 @@
 part of 'watch_edit_bloc.dart';
 
- class WatchEditState extends Equatable {
+class WatchEditState extends Equatable {
   final bool isAdded;
 
   const WatchEditState({required this.isAdded});
@@ -16,5 +16,3 @@ part of 'watch_edit_bloc.dart';
     );
   }
 }
-
-

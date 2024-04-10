@@ -56,32 +56,33 @@ void main() {
     });
 
     test('Should return Top Rated Movies list when the response code is 200',
-            () async {
-          // arrange
-          mockHttpClientAdapter.mockResponseStub(fixture('movie_response'), 200);
+        () async {
+      // arrange
+      mockHttpClientAdapter.mockResponseStub(fixture('movie_response'), 200);
 
-          // act
-          final result = await movieService.getTopRatedList();
+      // act
+      final result = await movieService.getTopRatedList();
 
-          // assert
-          expect(result, isA<MovieResponse>());
-          expect(result.results, testMovies);
-        });
+      // assert
+      expect(result, isA<MovieResponse>());
+      expect(result.results, testMovies);
+    });
 
     test('Should return Now Playing Movies list when the response code is 200',
-            () async {
-          // arrange
-          mockHttpClientAdapter.mockResponseStub(fixture('movie_response'), 200);
+        () async {
+      // arrange
+      mockHttpClientAdapter.mockResponseStub(fixture('movie_response'), 200);
 
-          // act
-          final result = await movieService.getNowList();
+      // act
+      final result = await movieService.getNowList();
 
-          // assert
-          expect(result, isA<MovieResponse>());
-          expect(result.results, testMovies);
-        });
+      // assert
+      expect(result, isA<MovieResponse>());
+      expect(result.results, testMovies);
+    });
 
-    test('Should return return a failure when response code for getting movie list is 404 or other',
+    test(
+        'Should return return a failure when response code for getting movie list is 404 or other',
         () async {
       // arrange
       mockHttpClientAdapter.mockResponseStub('Not found', 404);
@@ -92,69 +93,72 @@ void main() {
       expect(() => request(), throwsA(const TypeMatcher<DioException>()));
     });
 
-    test('Should return return a failure when response code for getting movie now playing list is 404 or other',
-            () async {
-          // arrange
-          mockHttpClientAdapter.mockResponseStub('Not found', 404);
+    test(
+        'Should return return a failure when response code for getting movie now playing list is 404 or other',
+        () async {
+      // arrange
+      mockHttpClientAdapter.mockResponseStub('Not found', 404);
 
-          final request = movieService.getNowList;
+      final request = movieService.getNowList;
 
-          // assert
-          expect(() => request(), throwsA(const TypeMatcher<DioException>()));
-        });
+      // assert
+      expect(() => request(), throwsA(const TypeMatcher<DioException>()));
+    });
   });
 
   group('Get movie details', () {
-    const  movieDetailsId = 95;
-    test('Should return MovieDetails when the response code is 200',
-            () async {
-          // arrange
-          mockHttpClientAdapter.mockResponseStub(fixture('movie_details'), 200);
+    const movieDetailsId = 95;
+    test('Should return MovieDetails when the response code is 200', () async {
+      // arrange
+      mockHttpClientAdapter.mockResponseStub(fixture('movie_details'), 200);
 
-          // act
-          final result = await movieService.getMovieDetails(movieDetailsId);
+      // act
+      final result = await movieService.getMovieDetails(movieDetailsId);
 
-          // assert
-          expect(result, isA<MovieDetails>());
-          expect(result, testMovieDetails);
-        });
+      // assert
+      expect(result, isA<MovieDetails>());
+      expect(result, testMovieDetails);
+    });
 
-    test('Should return return a failure when response code for getting movie details is 404 or other',
-            () async {
-          // arrange
-          mockHttpClientAdapter.mockResponseStub('Not found', 404);
+    test(
+        'Should return return a failure when response code for getting movie details is 404 or other',
+        () async {
+      // arrange
+      mockHttpClientAdapter.mockResponseStub('Not found', 404);
 
-          final request = movieService.getMovieDetails;
+      final request = movieService.getMovieDetails;
 
-          // assert
-          expect(() => request(movieDetailsId), throwsA(const TypeMatcher<DioException>()));
-        });
+      // assert
+      expect(() => request(movieDetailsId),
+          throwsA(const TypeMatcher<DioException>()));
+    });
   });
 
   group('Get movie details', () {
-    const  movieNowId = 787699;
-    test('Should return MovieNow when the response code is 200',
-            () async {
-          // arrange
-          mockHttpClientAdapter.mockResponseStub(fixture('movie_now'), 200);
+    const movieNowId = 787699;
+    test('Should return MovieNow when the response code is 200', () async {
+      // arrange
+      mockHttpClientAdapter.mockResponseStub(fixture('movie_now'), 200);
 
-          // act
-          final result = await movieService.getMovieNow(movieNowId);
+      // act
+      final result = await movieService.getMovieNow(movieNowId);
 
-          // assert
-          expect(result, isA<MovieNow>());
-          expect(result, testMovieNow);
-        });
+      // assert
+      expect(result, isA<MovieNow>());
+      expect(result, testMovieNow);
+    });
 
-    test('Should return return a failure when response code for getting movie now is 404 or other',
-            () async {
-          // arrange
-          mockHttpClientAdapter.mockResponseStub('Not found', 404);
+    test(
+        'Should return return a failure when response code for getting movie now is 404 or other',
+        () async {
+      // arrange
+      mockHttpClientAdapter.mockResponseStub('Not found', 404);
 
-          final request = movieService.getMovieNow;
+      final request = movieService.getMovieNow;
 
-          // assert
-          expect(() => request(movieNowId), throwsA(const TypeMatcher<DioException>()));
-        });
+      // assert
+      expect(() => request(movieNowId),
+          throwsA(const TypeMatcher<DioException>()));
+    });
   });
 }

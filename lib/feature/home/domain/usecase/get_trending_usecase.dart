@@ -9,5 +9,6 @@ class GetTrendingUsecase {
 
   GetTrendingUsecase(this._movieRepository);
 
-  Future<Either<Failure, List<Movie>>> call() async => _movieRepository.getTrendingList();
+  Future<Either<Failure, List<Movie>>> call() async =>
+      _movieRepository.getTrendingList();
 }

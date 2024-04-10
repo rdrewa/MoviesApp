@@ -6,6 +6,7 @@ import '../../../domain/model/movie_now.dart';
 import '../../../domain/usecase/get_now_usecase.dart';
 
 part 'now_event.dart';
+
 part 'now_state.dart';
 
 class NowBloc extends Bloc<NowEvent, NowState> {

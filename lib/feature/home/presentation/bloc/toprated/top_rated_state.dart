@@ -27,4 +27,3 @@ final class TopRatedFailure extends TopRatedState {
 
   const TopRatedFailure(this.message);
 }
-

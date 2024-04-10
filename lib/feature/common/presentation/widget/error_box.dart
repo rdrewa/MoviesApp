@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/core/extension/build_context_theme_extension.dart';
+
 class ErrorBox extends StatelessWidget {
   final String message;
 
@@ -7,12 +9,16 @@ class ErrorBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-        child: Text(
-          message,
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium
-              ?.copyWith(color: Colors.red, fontWeight: FontWeight.bold),
+        child: Container(
+          decoration: BoxDecoration(
+              color: context.colorScheme.errorContainer,
+              border: Border.all(color: context.colorScheme.error, width: 2.0)),
+          padding: const EdgeInsets.all(20.0),
+          child: Text(
+            message,
+            style: context.bodyMedium?.copyWith(
+                color: context.colorScheme.error, fontWeight: FontWeight.bold),
+          ),
         ),
       );
 }

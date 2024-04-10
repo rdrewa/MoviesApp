@@ -16,9 +16,9 @@ class ReviewResponse extends Equatable {
 
   const ReviewResponse(
       {required this.page,
-        required this.results,
-        required this.totalPages,
-        required this.totalResults});
+      required this.results,
+      required this.totalPages,
+      required this.totalResults});
 
   factory ReviewResponse.fromJson(Map<String, dynamic> data) =>
       _$ReviewResponseFromJson(data);

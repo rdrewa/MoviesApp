@@ -15,7 +15,8 @@ class Credits extends Equatable {
     required this.crew,
   });
 
-  factory Credits.fromJson(Map<String, dynamic> data) => _$CreditsFromJson(data);
+  factory Credits.fromJson(Map<String, dynamic> data) =>
+      _$CreditsFromJson(data);
 
   Map<String, dynamic> toJson() => _$CreditsToJson(this);
 

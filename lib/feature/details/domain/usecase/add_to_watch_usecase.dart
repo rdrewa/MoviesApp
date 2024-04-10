@@ -9,5 +9,6 @@ class AddToWatchUsecase {
 
   AddToWatchUsecase(this.watchRepository);
 
-  Future<Either<Failure, void>>call(Movie item) => watchRepository.addItem(item);
+  Future<Either<Failure, void>> call(Movie item) =>
+      watchRepository.addItem(item);
 }

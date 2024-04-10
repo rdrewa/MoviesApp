@@ -10,6 +10,6 @@ class BodyText extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
       padding: const EdgeInsets.symmetric(vertical: 12),
-      child: Text(body,
-          style: context.bodyMedium, textAlign: TextAlign.justify));
+      child:
+          Text(body, style: context.bodyMedium, textAlign: TextAlign.justify));
 }

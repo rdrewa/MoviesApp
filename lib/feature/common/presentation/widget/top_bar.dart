@@ -10,7 +10,8 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) => AppBar(
       leading: context.canPop() ? const BackButton() : null,
-      title: Text(title), actions: actions);
+      title: Text(title),
+      actions: actions);
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);

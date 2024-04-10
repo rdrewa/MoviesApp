@@ -6,6 +6,7 @@ import '../../../domain/model/movie_details.dart';
 import '../../../domain/usecase/get_details_usecase.dart';
 
 part 'details_event.dart';
+
 part 'details_state.dart';
 
 class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {

@@ -50,5 +50,4 @@ class WatchDbRepository implements WatchRepository {
       return Left(DatabaseFailure(failure.message));
     }
   }
-
 }

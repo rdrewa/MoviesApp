@@ -6,7 +6,7 @@ import 'picture.dart';
 part 'pictures.g.dart';
 
 @JsonSerializable()
-class Pictures extends Equatable{
+class Pictures extends Equatable {
   final List<Picture> backdrops;
   final List<Picture> logos;
   final List<Picture> posters;
@@ -17,7 +17,8 @@ class Pictures extends Equatable{
     required this.posters,
   });
 
-  factory Pictures.fromJson(Map<String, dynamic> data) => _$PicturesFromJson(data);
+  factory Pictures.fromJson(Map<String, dynamic> data) =>
+      _$PicturesFromJson(data);
 
   Map<String, dynamic> toJson() => _$PicturesToJson(this);
 

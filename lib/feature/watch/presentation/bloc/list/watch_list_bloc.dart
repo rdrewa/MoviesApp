@@ -6,6 +6,7 @@ import '../../../../common/domain/model/movie.dart';
 import '../../../domain/usecase/get_watch_list_usecase.dart';
 
 part 'watch_list_event.dart';
+
 part 'watch_list_state.dart';
 
 class WatchListBloc extends Bloc<WatchListEvent, WatchListState> {
@@ -17,6 +18,8 @@ class WatchListBloc extends Bloc<WatchListEvent, WatchListState> {
 
   FutureOr<void> _onGetWatchListEvent(
       GetWatchListEvent event, Emitter<WatchListState> emit) async {
+    emit(WatchListLoading());
+
     (await getWatchListUsecase()).fold(
         (fail) => emit(WatchListFailure(fail.message)),
         (data) =>

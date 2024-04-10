@@ -27,4 +27,3 @@ final class PopularFailure extends PopularState {
 
   const PopularFailure(this.message);
 }
-

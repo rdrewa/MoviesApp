@@ -158,25 +158,26 @@ void main() {
           .thenAnswer((_) async => testMovieNow);
 
       // act
-      final Either<Failure, List<MovieNow>> result = await movieRestRepository.getNowList();
+      final Either<Failure, List<MovieNow>> result =
+          await movieRestRepository.getNowList();
 
       // assert
       result.fold((left) => fail('test failed'),
-              (right) => expect(right, [testMovieNow]));
+          (right) => expect(right, [testMovieNow]));
     });
 
     test(
         'Should return server failure when a call about MovieDNow list to service is unsuccessful',
-            () async {
-          // arrange
-          when(() => mockMovieService.getNowList())
-              .thenThrow(DioException(requestOptions: RequestOptions()));
+        () async {
+      // arrange
+      when(() => mockMovieService.getNowList())
+          .thenThrow(DioException(requestOptions: RequestOptions()));
 
-          // act
-          final result = await movieRestRepository.getNowList();
+      // act
+      final result = await movieRestRepository.getNowList();
 
-          // assert
-          expect(result, equals(const Left(ServerFailure('Server Failure'))));
-        });
+      // assert
+      expect(result, equals(const Left(ServerFailure('Server Failure'))));
+    });
   });
 }

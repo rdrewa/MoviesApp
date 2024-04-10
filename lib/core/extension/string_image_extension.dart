@@ -1,4 +1,4 @@
-import 'package:movies_app/app/config.dart';
+import '../../app/config.dart';
 
 extension StringImageExtension on String {
   String get imageW1280 => '${Config.imageW1280}$this';

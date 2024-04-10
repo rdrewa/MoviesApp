@@ -6,7 +6,7 @@ sealed class WatchEditEvent extends Equatable {
   const WatchEditEvent(this.item);
 
   @override
-  List<Object?> get props =>[item];
+  List<Object?> get props => [item];
 }
 
 class IsOnListEvent extends WatchEditEvent {

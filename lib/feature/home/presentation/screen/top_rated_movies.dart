@@ -21,7 +21,9 @@ class TopRatedMovies extends StatelessWidget {
                 TopRatedInitial() => const SizedBox.shrink(),
                 TopRatedEmpty() =>
                   EmptyBox(message: 'home.toprated.empty'.tr()),
-                TopRatedLoading() => const ProgressWheel(height: 250,),
+                TopRatedLoading() => const ProgressWheel(
+                    height: 250,
+                  ),
                 TopRatedLoaded() => SkyscraperList(
                     title: 'home.toprated.title'.tr(),
                     list: state.data,

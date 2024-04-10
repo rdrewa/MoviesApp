@@ -3,7 +3,6 @@ import 'package:hive/hive.dart';
 import '../../../domain/model/movie.dart';
 
 class WatchService {
-
   late final Box _box;
 
   WatchService(String table) : _box = Hive.box<Movie>(table);

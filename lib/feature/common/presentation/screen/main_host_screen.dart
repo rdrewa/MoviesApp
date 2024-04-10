@@ -15,11 +15,7 @@ class MainHostScreen extends StatefulWidget {
 class _MainHostScreenState extends State<MainHostScreen> {
   int selectedIndex = 0;
 
-  final routes = [
-    AppRoutes.home,
-    AppRoutes.now,
-    AppRoutes.watch
-  ];
+  final routes = [AppRoutes.home, AppRoutes.now, AppRoutes.watch];
 
   @override
   Widget build(BuildContext context) => Scaffold(

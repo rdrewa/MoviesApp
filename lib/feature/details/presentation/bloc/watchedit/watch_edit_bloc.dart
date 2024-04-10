@@ -8,6 +8,7 @@ import '../../../domain/usecase/is_on_watch_usecase.dart';
 import '../../../domain/usecase/remove_from_watch_usecase.dart';
 
 part 'watch_edit_event.dart';
+
 part 'watch_edit_state.dart';
 
 class WatchEditBloc extends Bloc<WatchEditEvent, WatchEditState> {

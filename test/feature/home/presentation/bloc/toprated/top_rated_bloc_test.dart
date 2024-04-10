@@ -44,5 +44,6 @@ void main() {
       setUp: () => when(() => mockGetTopRatedUsecase())
           .thenAnswer((_) async => const Left(ServerFailure('Server failure'))),
       act: (bloc) => bloc.add(GetTopRatedEvent()),
-      expect: () => [TopRatedLoading(), const TopRatedFailure('Something went wrong')]);
+      expect: () =>
+          [TopRatedLoading(), const TopRatedFailure('Something went wrong')]);
 }

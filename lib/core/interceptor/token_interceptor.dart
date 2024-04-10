@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:movies_app/app/config.dart';
+
+import '../../app/config.dart';
 
 class TokenInterceptor extends Interceptor {
   @override

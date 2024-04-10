@@ -25,7 +25,7 @@ void main() {
     await watchService.addItem(testMovie1);
 
     // act
-    final results =  await watchService.getList();
+    final results = await watchService.getList();
 
     // assert
     expect(results.first, testMovie1);
@@ -37,7 +37,7 @@ void main() {
 
     // act
     await watchService.removeItem(testMovie1);
-    final results =  await watchService.getList();
+    final results = await watchService.getList();
 
     // assert
     expect(results.isEmpty, true);

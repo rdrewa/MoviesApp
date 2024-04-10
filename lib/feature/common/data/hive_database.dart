@@ -10,4 +10,4 @@ class HiveDatabase {
     Hive.registerAdapter(MovieAdapter());
     Hive.openBox<Movie>(Movie.table);
   }
-} 
+}
