@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/core/extension/build_context_theme_extension.dart';
+
 class WatchTitle extends StatelessWidget {
   final String title;
 
@@ -7,5 +9,5 @@ class WatchTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      Text(title, maxLines: 1, style: Theme.of(context).textTheme.titleLarge);
+      Text(title, maxLines: 1, style: context.titleLarge);
 }
