@@ -17,7 +17,7 @@ class MovieApp extends StatelessWidget {
       locale: context.locale,
       theme: AppTheme.lightMode,
       darkTheme: AppTheme.darkMode,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
     );
   }
 }
