@@ -1,6 +1,7 @@
-# MoviesApp [MBA]
+# MoviesApp
 
 A simple app to demonstrate Clean Architecture with REST and [Bloc](https://bloclibrary.dev/) state management.
+A codename for this project is **MBA** and it is used as a prefix for tasks, commit & branches. Tasks are Git issues.
 
 ## Implementation Details:
 
