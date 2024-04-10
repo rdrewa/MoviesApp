@@ -18,7 +18,7 @@ void main() {
 
   test('Should get Popular movies list from the repository', () async {
     // arrange
-    when(() => mockMovieRepository.getTrendingList())
+    when(() => mockMovieRepository.getPopularList())
         .thenAnswer((_) async => Right(testMovies));
 
     // act
