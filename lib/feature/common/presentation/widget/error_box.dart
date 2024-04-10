@@ -10,8 +10,8 @@ class ErrorBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Center(
         child: Container(
-          color: context.colorScheme.errorContainer,
           decoration: BoxDecoration(
+              color: context.colorScheme.errorContainer,
               border: Border.all(color: context.colorScheme.error, width: 2.0)),
           padding: const EdgeInsets.all(20.0),
           child: Text(

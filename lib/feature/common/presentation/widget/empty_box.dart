@@ -10,8 +10,8 @@ class EmptyBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Center(
         child: Container(
-          color: context.colorScheme.secondaryContainer,
           decoration: BoxDecoration(
+              color: context.colorScheme.secondaryContainer,
               border:
                   Border.all(color: context.colorScheme.secondary, width: 2.0)),
           padding: const EdgeInsets.all(20.0),
