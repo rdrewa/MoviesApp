@@ -8,10 +8,10 @@ A simple app to demonstrate Clean Architecture with REST and [Bloc](https://bloc
 - **Dependencies**: [get_it](https://pub.dev/packages/get_it)
 - **Network**: [retrofit](https://pub.dev/packages/retrofit), [dio](https://pub.dev/packages/dio)
 - **Navigation**: [go_router](https://pub.dev/packages/go_router)
-- **Error handling**: [dartz](https://pub.dev/packages/freezed) [FP]
+- **Error handling**: [dartz](https://pub.dev/packages/freezed) [FP](https://medium.com/nerd-for-tech/better-error-handling-with-either-type-in-dart-b91bef20d716)
 - **Serialization**: [json_serialization](https://pub.dev/packages/json_serialization)
 - **Persistence**: [hive](https://pub.dev/packages/hive), [hive_flutter](https://pub.dev/packages/hive_flutter)
-- **Unions/pattern-matching etc.**: [freezed]((https://pub.dev/packages/freezed))
+- **Unions/pattern-matching etc.**: [freezed](https://pub.dev/packages/freezed)
 - **Comparing**: [equatable](https://pub.dev/packages/equatable)
 - **Localization**: [easy_localization](https://pub.dev/packages/easy_localization)
 - **Mocking**: [mocktail](https://pub.dev/packages/mocktail)
@@ -61,22 +61,22 @@ A simple app to demonstrate Clean Architecture with REST and [Bloc](https://bloc
 │   │   ├── details
 │   │   ├── home
 │   │   │   ├── data
-│   │   │   │   ├── model
-│   │   │   │   ├── repository
-│   │   │   │   └── source
-│   │   │   │       ├── local
-│   │   │   │       └── remote
-│   │   │   ├── domain
-│   │   │   │   ├── model
-│   │   │   │   ├── repository
-│   │   │   │   └── usecase
-│   │   │   └── presentation
-│   │   │   │   ├── bloc
-│   │   │   │   ├── screen
-│   │   │   │   └── widget
-│   │   ├── now
-│   │   └── watch
-│   ├── theme
+│   │   │   │   ├── model/
+│   │   │   │   ├── repository/
+│   │   │   │   └── source/
+│   │   │   │       ├── local/
+│   │   │   │       └── remote/
+│   │   │   ├── domain/
+│   │   │   │   ├── model/
+│   │   │   │   ├── repository/
+│   │   │   │   └── usecase/
+│   │   │   └── presentation/
+│   │   │       ├── bloc/
+│   │   │       ├── screen/
+│   │   │       └── widget/
+│   │   ├── now/
+│   │   └── watch/
+│   ├── theme/
 │   │   ├── app_app_bar_theme.dart
 │   │   ├── app_bottom_bar_theme.dart
 │   │   ├── app_color_theme.dart
@@ -84,27 +84,27 @@ A simple app to demonstrate Clean Architecture with REST and [Bloc](https://bloc
 │   │   ├── app_text_theme.dart
 │   │   └── app_theme.dart
 ├── test
-│   ├── feature
-│   │   ├── featue-name
-│   │   │   ├── data
-│   │   │   │   ├── model
-│   │   │   │   ├── repository
-│   │   │   │   └── source
-│   │   │   │       ├── local
-│   │   │   │       └── remote
+│   ├── feature/
+│   │   ├── [feature-name]/
+│   │   │   ├── data/
+│   │   │   │   ├── model/
+│   │   │   │   ├── repository/
+│   │   │   │   └── source/
+│   │   │   │       ├── local/
+│   │   │   │       └── remote/
 │   │   │   ├── domain
-│   │   │   │   ├── model
-│   │   │   │   ├── repository
-│   │   │   │   └── usecase
-│   │   │   └── presentation
-│   │   │   │   ├── bloc
-│   │   │   │   └── screen
-│   ├── fixtue
-│   └── util
+│   │   │   │   ├── model/
+│   │   │   │   ├── repository/
+│   │   │   │   └── usecase/
+│   │   │   └── presentation/
+│   │   │       ├── bloc/
+│   │   │       └── screen/
+│   ├── fixtue/
+│   └── util/
 ├── ...
 └── .
 ```
-It is not exact folders hierarchy. In feature some folder can be omitted, because some classes are shared in common.
+It is not exact folders hierarchy. In feature some folder can be omitted, because some classes are shared and placed in common.
 
 
 [11]: screenshots/android/light/android-light-01_home.png
