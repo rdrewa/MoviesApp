@@ -16,4 +16,6 @@ extension BuildContextThemeExtension on BuildContext {
   TextStyle? get bodySmall => textTheme.bodySmall;
 
   TextStyle? get bodyMedium => textTheme.bodyMedium;
+
+  TextStyle? get titleLarge => textTheme.titleLarge;
 }
