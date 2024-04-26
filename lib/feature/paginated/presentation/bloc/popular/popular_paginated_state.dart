@@ -14,7 +14,7 @@ final class PopularPaginatedEmpty extends PopularPaginatedState {}
 final class PopularPaginatedLoading extends PopularPaginatedState {}
 
 final class PopularPaginatedLoaded extends PopularPaginatedState {
-  final MovieResponse data;
+  final List<Movie> data;
 
   const PopularPaginatedLoaded(this.data);
 
