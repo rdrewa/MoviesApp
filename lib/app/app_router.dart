@@ -7,6 +7,7 @@ import '/feature/details/presentation/screen/details_screen.dart';
 import '/feature/home/presentation/screen/home_screen.dart';
 import '/feature/now/presentation/screen/now_screen.dart';
 import '/feature/watch/presentation/screen/watch_screen.dart';
+import '/feature/paginated/presentation/screen/popular_paginated_screen.dart';
 
 import 'app_routes.dart';
 
@@ -17,6 +18,7 @@ class AppRouter {
   static const String _nowPath = '/now';
   static const String _watchPath = '/watch';
   static const String _detailsPath = 'details/:id';
+  static const String _popularPath = 'popular';
 
   static String initial = _homePath;
 
@@ -42,7 +44,14 @@ class AppRouter {
                   name: AppRoutes.home,
                   path: _homePath,
                   builder: (context, state) => const HomeScreen(),
-                  routes: [routeDetails]),
+                  routes: [
+                    routeDetails,
+                    GoRoute(
+                        name: AppRoutes.popular,
+                        path: _popularPath,
+                        builder: (context, state) =>
+                            const PopularPaginatedScreen())
+                  ]),
               GoRoute(
                   name: AppRoutes.now,
                   path: _nowPath,
