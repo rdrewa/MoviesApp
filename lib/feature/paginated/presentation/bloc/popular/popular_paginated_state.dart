@@ -15,11 +15,13 @@ final class PopularPaginatedLoading extends PopularPaginatedState {}
 
 final class PopularPaginatedLoaded extends PopularPaginatedState {
   final List<Movie> data;
+  final bool hasMore;
+  final int? next;
 
-  const PopularPaginatedLoaded(this.data);
+  const PopularPaginatedLoaded(this.data, this.hasMore, this.next);
 
   @override
-  List<Object> get props => [data];
+  List<Object> get props => [data, hasMore, next ?? 0];
 }
 
 final class PopularPaginatedFailure extends PopularPaginatedState {

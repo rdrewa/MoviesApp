@@ -7,11 +7,4 @@ sealed class PopularPaginatedEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class GetPopularPaginatedEvent extends PopularPaginatedEvent {
-  final int page;
-
-  const GetPopularPaginatedEvent(this.page);
-
-  @override
-  List<Object?> get props => [page];
-}
+class GetPopularPaginatedEvent extends PopularPaginatedEvent {}
