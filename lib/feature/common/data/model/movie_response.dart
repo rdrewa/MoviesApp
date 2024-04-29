@@ -27,4 +27,6 @@ class MovieResponse extends Equatable {
 
   @override
   List<Object?> get props => [page, results, totalPages, totalResults];
+
+  bool get hasNext => page < totalPages;
 }

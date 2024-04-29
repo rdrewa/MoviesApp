@@ -10,9 +10,10 @@ class SkyscraperList extends StatelessWidget {
   final String title;
   final List<SkyscraperData> list;
   final double height;
+  final String? route;
 
   const SkyscraperList(
-      {super.key, required this.title, required this.list, this.height = 250});
+      {super.key, required this.title, required this.list, this.height = 250, this.route});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class SkyscraperList extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          HeadlineText(text: title),
+          HeadlineText(text: title, route: route),
           const SizedBox(
             height: 10,
           ),

@@ -74,4 +74,34 @@ class MovieRestRepository implements MovieRepository {
     final list = await Future.wait(futures);
     return list;
   }
+
+  @override
+  Future<Either<Failure, MovieResponse>> getPopularPaginated(int page) async {
+    try {
+      final MovieResponse responseData = await service.getPopularPaginated(page);
+      return Right(responseData);
+    } on Exception {
+      return const Left(ServerFailure('Server Failure'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, MovieResponse>> getTopRatedPaginated(int page) async {
+    try {
+      final MovieResponse responseData = await service.getTopRatedPaginated(page);
+      return Right(responseData);
+    } on Exception {
+      return const Left(ServerFailure('Server Failure'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, MovieResponse>> getTrendingPaginated(int page) async {
+    try {
+      final MovieResponse responseData = await service.getTrendingPaginated(page);
+      return Right(responseData);
+    } on Exception {
+      return const Left(ServerFailure('Server Failure'));
+    }
+  }
 }

@@ -28,4 +28,13 @@ abstract class MovieService {
 
   @GET('movie/{id}?append_to_response=images')
   Future<MovieNow> getMovieNow(@Path() int id);
+
+  @GET('trending/all/week?page={page}')
+  Future<MovieResponse> getTrendingPaginated(@Path() int page);
+
+  @GET('movie/popular?page={page}')
+  Future<MovieResponse> getPopularPaginated(@Path() int page);
+
+  @GET('movie/top_rated?page={page}')
+  Future<MovieResponse> getTopRatedPaginated(@Path() int page);
 }
