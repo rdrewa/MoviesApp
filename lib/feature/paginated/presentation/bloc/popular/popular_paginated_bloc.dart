@@ -35,7 +35,7 @@ class PopularPaginatedBloc
     (await _getPopularPaginatedUsecase(page)).fold(
         (fail) => emit(const PopularPaginatedFailure('Something went wrong')),
         (data) {
-      final int next = data.page;
+      final int? next = data.hasNext ? data.page + 1 : null;
       final bool hasMore = data.hasNext;
 
       if (isLoadingMore) {
