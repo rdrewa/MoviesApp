@@ -25,6 +25,6 @@ void main() {
     final result = await getTrendingUsecase();
 
     // assert
-    expect(result, Right(testMovieDetails));
+    expect(result, Right(testMovies));
   });
 }
