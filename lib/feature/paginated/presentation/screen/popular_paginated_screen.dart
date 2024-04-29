@@ -20,15 +20,30 @@ class PopularPaginatedScreen extends StatelessWidget {
         title: HeadlineText(text: 'home.popular.title'.tr()),
       ),
       body: BlocProvider(
-        create: (_) => sl<PopularPaginatedBloc>()..add(GetPopularPaginatedEvent()),
+        create: (_) =>
+            sl<PopularPaginatedBloc>()..add(GetPopularPaginatedEvent()),
         child: BlocBuilder<PopularPaginatedBloc, PopularPaginatedState>(
             builder: (context, state) => switch (state) {
                   PopularPaginatedInitial() => const SizedBox.shrink(),
-                  PopularPaginatedEmpty() => EmptyBox(message: 'home.popular.empty'.tr()),
+                  PopularPaginatedEmpty() =>
+                    EmptyBox(message: 'home.popular.empty'.tr()),
                   PopularPaginatedLoading() => const ProgressWheel(height: 250),
-                  PopularPaginatedLoaded() => SkyscraperGrid(
-                      title: 'home.popular.title'.tr(),
-                      list: state.data,
+                  PopularPaginatedLoaded() =>
+                    NotificationListener<ScrollEndNotification>(
+                      onNotification: (scrollInfo) {
+                        if (scrollInfo.metrics.pixels ==
+                                scrollInfo.metrics.maxScrollExtent &&
+                            state.hasMore) {
+                          BlocProvider.of<PopularPaginatedBloc>(context)
+                              .add(GetPopularPaginatedEvent());
+                        }
+                        return true;
+                      },
+                      child: SkyscraperGrid(
+                        title: 'home.popular.title'.tr(),
+                        list: state.data,
+                        hasMore: state.hasMore,
+                      ),
                     ),
                   PopularPaginatedFailure() => ErrorBox(message: state.message),
                 }),
