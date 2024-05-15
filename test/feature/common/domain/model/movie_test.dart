@@ -54,6 +54,17 @@ void main() {
     expect(result, equals(testMovies));
   });
 
+  test('Should return a valid JSON map from object', () async {
+    // arrange
+    final Map<String, dynamic> jsonMap = json.decode(fixture('movie_1'));
+
+    // act
+    final Map<String, dynamic> result = testMovie1.toJson();
+
+    // assert
+    expect(result, equals(jsonMap));
+  });
+
   test('Should return a valid model from MovieDetails', () async {
     // arrange: from data.dart
 
