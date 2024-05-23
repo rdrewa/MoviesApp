@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:movies_app/core/extension/date_time_format_extension.dart';
 
 import 'package:movies_app/feature/common/domain/model/movie.dart';
 
@@ -52,6 +53,18 @@ void main() {
 
     // assert
     expect(result, equals(testMovies));
+  });
+
+  test('Should return a valid JSON map from object', () async {
+    // arrange
+    final Map<String, dynamic> jsonMap = json.decode(fixture('movie_1'));
+
+    // act
+    final Map<String, dynamic> result = testMovie1.toJson();
+    result['release_date'] = DateTime.parse(result['release_date']).dashDate;
+
+    // assert
+    expect(result, equals(jsonMap));
   });
 
   test('Should return a valid model from MovieDetails', () async {

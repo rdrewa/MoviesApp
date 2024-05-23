@@ -47,6 +47,9 @@ final testMovie2 = Movie(
 
 final testMovies = [testMovie1, testMovie2];
 
+final testMovieResponse1 =
+    MovieResponse(page: 1, results: testMovies, totalPages: 1, totalResults: 2);
+
 const testGenre1 = Genre(id: 12, name: 'Adventure');
 const testGenre2 = Genre(id: 878, name: 'Science Fiction');
 
